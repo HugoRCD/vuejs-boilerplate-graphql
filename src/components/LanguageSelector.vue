@@ -1,28 +1,37 @@
 <template>
-  <select v-model="$i18n.locale" class="language-selector">
-    <option v-for="(locale, i) in locales" :key="`locale-${i}`" :value="locale">
-      {{ locale }}
-    </option>
-  </select>
+  <div class="language-selector" @click="changeLocale">
+    <box-icon name="globe" size="md"></box-icon>
+  </div>
 </template>
 
 <script>
 export default {
   name: "LocaleSwitcher",
   data() {
-    return { locales: ["fr", "en"] };
+    return {
+      theme: "dark"
+    }
+  },
+  methods: {
+    changeLocale() {
+      if (this.$i18n.locale === "fr") {
+        this.$i18n.locale = "en";
+      } else {
+        this.$i18n.locale = "fr";
+      }
+    }
   }
 };
 </script>
 
-<style scoped lang="sass">
-.language-selector
-  background-color: #2563EB
-  color: #fff
-  border: none
-  padding: 0.5rem 1rem
-  border-radius: 0.25rem
-  font-size: 1rem
-  font-weight: 500
-  cursor: pointer
+<style scoped lang="scss">
+.language-selector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-icon {
+    color: var(--font-color);
+  }
+}
 </style>

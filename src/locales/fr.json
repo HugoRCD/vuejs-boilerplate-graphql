@@ -1,5 +1,7 @@
 {
   "home": "Accueil",
   "about": "A propos",
-  "contact": "Contact"
+  "contact": "Contact",
+  "login": "Connexion",
+  "signup": "Inscription"
 }
