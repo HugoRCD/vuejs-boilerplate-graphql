@@ -6,9 +6,9 @@
     </div>
     <div class="nav-container">
       <div class="nav-link">
-        <router-link to="/">Home</router-link>
-        <router-link to="/about">About</router-link>
-        <router-link to="/contact">Contact</router-link>
+        <router-link to="/">{{ $t("home") }}</router-link>
+        <router-link to="/about">{{ $t("about") }}</router-link>
+        <router-link to="/contact">{{ $t("contact") }}</router-link>
       </div>
       <div class="nav-button">
         <LanguageSelector />

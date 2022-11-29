@@ -1,26 +1,18 @@
 <template>
-  <select v-model="selectedLanguage" class="language-selector">
-    <option v-for="key in Object.keys(languages)" :key="key" :value="key">
-      {{ languages[key] }}
+  <select v-model="$i18n.locale" class="language-selector">
+    <option v-for="(locale, i) in locales" :key="`locale-${i}`" :value="locale">
+      {{ locale }}
     </option>
   </select>
 </template>
 
 <script>
 export default {
-  name: "LanguageSelector",
+  name: "LocaleSwitcher",
   data() {
-    return {
-      languages: {
-        "fr": "Français",
-        "en": "English",
-        "es": "Español",
-        "de": "Deutsch",
-      },
-      selectedLanguage: "en",
-    };
-  },
-}
+    return { locales: ["fr", "en"] };
+  }
+};
 </script>
 
 <style scoped lang="sass">
