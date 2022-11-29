@@ -1,7 +1,7 @@
 <template>
   <div class="theme-switcher" @click="changeTheme">
-    <box-icon v-if="theme === 'dark'" name="sun" size="md" :color="theme === 'dark' ? '#ffffff' : '#111827'"></box-icon>
-    <box-icon v-else name="moon" size="md" :color="theme === 'dark' ? '#ffffff' : '#111827'"></box-icon>
+    <box-icon v-if="theme === 'dark'" name="sun" size="sm" :color="theme === 'dark' ? '#ffffff' : '#111827'"></box-icon>
+    <box-icon v-else name="moon" size="sm" :color="theme === 'dark' ? '#ffffff' : '#111827'"></box-icon>
   </div>
 </template>
 

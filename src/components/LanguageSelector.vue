@@ -1,6 +1,7 @@
 <template>
   <div class="language-selector" @click="changeLocale">
-    <box-icon name="globe" size="md"></box-icon>
+    <div v-if="$i18n.locale === 'en'"><span>EN</span></div>
+    <div v-else><span>FR</span></div>
   </div>
 </template>
 
@@ -30,8 +31,12 @@ export default {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-icon {
+  div {
+    border-radius: 0.25rem;
+    background-color: var(--bg-secondary);
     color: var(--font-color);
+    font-weight: 600;
+    font-size: 0.75rem;
   }
 }
 </style>

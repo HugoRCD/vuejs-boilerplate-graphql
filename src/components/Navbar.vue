@@ -99,10 +99,7 @@ export default {
     .nav-button {
       display: flex;
       align-items: center;
-
-      button {
-        margin-right: 1rem;
-      }
+      gap: 1rem;
     }
 
     .burger-menu {

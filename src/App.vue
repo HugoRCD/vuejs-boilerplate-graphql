@@ -31,8 +31,17 @@ export default {
   --font-color-secondary: #374151;
 }
 
+:root {
+  --font-xs: 0.75rem;
+  --font-sm: 0.875rem;
+  --font-base: 1rem;
+  --font-lg: 1.125rem;
+  --font-xl: 1.25rem;
+}
+
 body {
   background-color: var(--bg-primary);
+  font-size: var(--font-base);
   color: #ffffff;
   font-family: 'Inter', sans-serif;
   margin: 0;
