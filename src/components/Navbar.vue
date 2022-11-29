@@ -6,9 +6,7 @@
     </div>
     <div class="nav-container">
       <div class="nav-link">
-        <router-link to="/">{{ $t("home") }}</router-link>
-        <router-link to="/about">{{ $t("about") }}</router-link>
-        <router-link to="/contact">{{ $t("contact") }}</router-link>
+        <router-link v-for="link in navLinks" :key="link.link" :to="link.link">{{ link.name }}</router-link>
       </div>
       <div class="nav-button">
         <Button :text="$t('login')" :color="'primary'"/>
@@ -55,7 +53,21 @@ export default {
   },
   data() {
     return {
-      showMenu: false
+      showMenu: false,
+      navLinks: [
+        {
+          name: this.$t("home"),
+          link: "/"
+        },
+        {
+          name: this.$t("about"),
+          link: "/about"
+        },
+        {
+          name: this.$t("contact"),
+          link: "/contact"
+        }
+      ]
     }
   },
   methods: {
