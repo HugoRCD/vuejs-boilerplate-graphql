@@ -22,6 +22,8 @@ export default {
   --bg-tertiary: #374151;
   --font-color: #ffffff;
   --font-color-secondary: #9CA3AF;
+  --accent: #10B981;
+  --accent-hover: #059669;
 }
 [data-theme="light"] {
   --bg-primary: #f4f4f4;
@@ -29,6 +31,8 @@ export default {
   --bg-tertiary: #ffffff;
   --font-color: #111827;
   --font-color-secondary: #374151;
+  --accent: #10B981;
+  --accent-hover: #059669;
 }
 
 :root {
@@ -37,6 +41,10 @@ export default {
   --font-base: 1rem;
   --font-lg: 1.125rem;
   --font-xl: 1.25rem;
+
+  --btn-padding: 0.35rem 1rem;
+  --btn-radius: 0.25rem;
+  --btn-color: #ffffff;
 }
 
 body {
@@ -50,6 +58,12 @@ body {
   img {
     width: 100%;
     height: auto;
+  }
+
+  div {
+    i {
+      color: var(--font-color);
+    }
   }
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="theme-switcher" @click="changeTheme">
-    <box-icon v-if="theme === 'dark'" name="sun" size="sm" :color="theme === 'dark' ? '#ffffff' : '#111827'"></box-icon>
-    <box-icon v-else name="moon" size="sm" :color="theme === 'dark' ? '#ffffff' : '#111827'"></box-icon>
+    <i v-if="theme === 'light'" class="fa-sharp fa-solid fa-moon fa-xl"></i>
+    <i v-else class="fa-sharp fa-solid fa-sun fa-xl"></i>
   </div>
 </template>
 
@@ -12,6 +12,9 @@ export default {
     return {
       theme: "dark"
     }
+  },
+  created() {
+    this.theme = localStorage.getItem("theme") || "dark";
   },
   methods: {
     changeTheme() {

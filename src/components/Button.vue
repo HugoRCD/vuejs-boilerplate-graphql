@@ -1,5 +1,5 @@
 <template>
-  <button class="btn" :class="color" @click="onClick">
+  <button class="btn" :class="color">
     {{ text }}
   </button>
 </template>
@@ -17,32 +17,28 @@ export default {
       default: "primary",
     },
   },
-  methods: {
-    onClick() {
-      this.$emit("click");
-    },
-  },
 }
 </script>
 
-<style scoped lang="sass">
-.btn
-  color: #fff
-  border: none
-  padding: 0.5rem 1rem
-  border-radius: 0.25rem
-  font-size: 1rem
-  font-weight: 500
-  cursor: pointer
-  &:hover
-    background-color: #5d5d5d
-  &.primary
-    background-color: #2563EB
-    &:hover
-      background-color: #5d5d5d
-  &.secondary
-    background-color: #1F2937
-    color: #fff
-    &:hover
-      background-color: #5d5d5d
+<style scoped lang="scss">
+.btn {
+  padding: var(--btn-padding);
+  border-radius: var(--btn-radius);
+  border: none;
+  cursor: pointer;
+  &.primary {
+    background-color: var(--accent);
+    color: var(--btn-color);
+    &:hover {
+      background-color: var(--accent-hover);
+    }
+  }
+  &.secondary {
+    background-color: var(--accent);
+    color: var(--btn-color);
+    &:hover {
+      background-color: var(--accent-hover);
+    }
+  }
+}
 </style>
