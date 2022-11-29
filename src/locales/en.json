@@ -3,5 +3,7 @@
   "about": "About",
   "contact": "Contact",
   "login": "Login",
-  "signup": "Signup"
+  "signup": "Signup",
+  "logout": "Logout",
+  "error404": "Error 404"
 }

@@ -9,8 +9,12 @@
         <router-link v-for="link in navLinks" :key="link.link" :to="link.link">{{ link.name }}</router-link>
       </div>
       <div class="nav-button">
-        <Button :text="$t('login')" :color="'primary'"/>
-        <Button :text="$t('signup')" :color="'secondary'"/>
+        <router-link to="/login">
+          <Button :text="$t('login')" :color="'primary'"/>
+        </router-link>
+        <router-link to="/register">
+          <Button :text="$t('signup')" :color="'secondary'"/>
+        </router-link>
         <ThemeSwitcher/>
         <LanguageSelector/>
       </div>
@@ -29,8 +33,12 @@
       <router-link to="/contact">{{ $t("contact") }}</router-link>
     </div>
     <div class="dropdown-button">
-      <Button :text="$t('login')" :color="'primary'"/>
-      <Button :text="$t('signup')" :color="'secondary'"/>
+      <router-link to="/login">
+        <Button :text="$t('login')" :color="'primary'"/>
+      </router-link>
+      <router-link to="/register">
+        <Button :text="$t('signup')" :color="'secondary'"/>
+      </router-link>
     </div>
     <div class="dropdown-button">
       <ThemeSwitcher/>
