@@ -1,17 +1,17 @@
 <template>
-  <div class="home">
-    {{ $t("home") }}
+  <div class="about">
+    {{ $t("about") }}
   </div>
 </template>
 
 <script>
 export default {
-  name: "Home"
+  name: "About"
 }
 </script>
 
 <style scoped lang="scss">
-.home {
+.about {
   color: var(--font-color);
   display: flex;
   justify-content: center;
