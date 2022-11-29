@@ -21,7 +21,7 @@
         </form>
       </div>
       <div class="login-footer">
-        <p>{{ $t("dontHaveAccount") }} <router-link to="/register">{{ $t("signup") }}</router-link></p>
+        <p>{{ $t("noAccount") }} <router-link to="/signup">{{ $t("signup") }}</router-link></p>
       </div>
     </div>
   </div>

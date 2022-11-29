@@ -12,7 +12,7 @@
         <router-link to="/login">
           <Button :text="$t('login')" :color="'primary'"/>
         </router-link>
-        <router-link to="/register">
+        <router-link to="/signup">
           <Button :text="$t('signup')" :color="'secondary'"/>
         </router-link>
         <ThemeSwitcher/>

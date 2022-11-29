@@ -3,7 +3,17 @@
   "about": "About",
   "contact": "Contact",
   "login": "Login",
-  "signup": "Signup",
+  "signup": "Sign-up",
   "logout": "Logout",
-  "error404": "Error 404"
+  "error404": "Error 404",
+  "error404Message": "The page you are looking for does not exist.",
+  "email": "Email",
+  "password": "Password",
+  "alreadyHaveAccount": "Already have an account ?",
+  "noAccount": "Don't have an account ?",
+  "forgotPassword": "Forgot password ?",
+  "resetPassword": "Reset password",
+  "sendPasswordResetLink": "Send password reset link",
+  "loginText": "Login with your email and password",
+  "signupText": "Sign-up to create your account"
 }

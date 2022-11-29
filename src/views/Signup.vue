@@ -1,26 +1,27 @@
 <template>
-  <div class="register">
-    <div class="register-container">
-      <div class="register-header">
-        <h1>{{ $t("register") }}</h1>
+  <div class="signup">
+    <div class="signup-container">
+      <div class="signup-header">
+        <h1>{{ $t("signup") }}</h1>
+        <p>{{ $t("signupText") }}</p>
       </div>
-      <div class="register-form">
-        <form @submit.prevent="register">
+      <div class="signup-form">
+        <form>
           <div class="form-group">
             <label for="email">{{ $t("email") }}</label>
-            <input type="email" id="email" placeholder="contact@gmail.com" v-model="email"/>
-            <label for=" password">{{ $t("password") }}</label>
-            <input type="password" id="password" placeholder="123soleil" v-model="password"/>
-            <div class=" form-group">
-              <Button :text="$t('register')" :color="'primary'"/>
-            </div>
+            <input type="email" id="email" placeholder="contact@gmail.com" />
+          </div>
+          <div class="form-group">
+            <label for="password">{{ $t("password") }}</label>
+            <input type="password" id="password" placeholder="123soleil" />
+          </div>
+          <div class="form-group">
+            <Button :text="$t('signup')" :color="'primary'" />
           </div>
         </form>
       </div>
-      <div class="register-footer">
-        <p>{{ $t("alreadyHaveAccount") }}
-          <router-link to="/login">{{ $t("login") }}</router-link>
-        </p>
+      <div class="signup-footer">
+        <p>{{ $t("noAccount") }} <router-link to="/login">{{ $t("signup") }}</router-link></p>
       </div>
     </div>
   </div>
@@ -30,7 +31,7 @@
 import Button from "@/components/Button";
 
 export default {
-  name: "Register",
+  name: "Signup",
   components: {
     Button,
   },
@@ -44,32 +45,36 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.register {
+.signup {
   display: flex;
   justify-content: center;
   align-items: center;
   color: var(--font-color);
-  .register-container {
+  .signup-container {
     width: 400px;
     background-color: var(--bg);
     border-radius: var(--border-radius);
     padding: 2rem;
     box-shadow: var(--box-shadow);
-    .register-header {
+    .signup-header {
       text-align: center;
       h1 {
         font-size: 2rem;
+        margin-bottom: 0.5rem;
+      }
+      p {
+        font-size: 0.9rem;
+        color: var(--text-muted);
       }
     }
-    .register-form {
+    .signup-form {
       margin-top: 2rem;
       form {
-        display: flex;
-        flex-direction: column;
         .form-group {
           margin-bottom: 1rem;
           label {
             display: block;
+            font-size: 0.9rem;
             margin-bottom: 0.5rem;
           }
           input {
@@ -78,18 +83,20 @@ export default {
             border: 1px solid var(--border-color);
             border-radius: var(--border-radius);
             outline: none;
+            color: var(--font-color-secondary);
             &:focus {
-              border-color: var(--primary-color);
+              border-color: var(--accent);
             }
           }
         }
       }
     }
-    .register-footer {
-      margin-top: 2rem;
+    .signup-footer {
+      margin-top: 1rem;
       text-align: center;
       p {
         font-size: 0.9rem;
+        color: var(--text-muted);
       }
     }
   }
