@@ -20,5 +20,22 @@
   "success": "Succès",
   "loginSuccess": "Vous êtes connecté avec succès !",
   "error": "Erreur",
-  "loginError": "Une erreur est survenue lors de la connexion"
+  "loginError": "Une erreur est survenue lors de la connexion",
+  "logoutSuccess": "Vous êtes déconnecté avec succès !",
+  "logoutMessage": "Vous vraiment vous déconnecter ?",
+  "cancel": "Annuler",
+  "confirm": "Confirmer",
+  "yes": "Oui",
+  "no": "Non",
+  "profil": "Profil",
+  "user": "Utilisateur",
+  "users": "Utilisateurs",
+  "name": "Nom",
+  "firstname": "Prénom",
+  "lastname": "Nom",
+  "role": "Rôle",
+  "roles": "Rôles",
+  "roleName": "Nom du rôle",
+  "roleDescription": "Description du rôle",
+  "username": "Nom d'utilisateur"
 }

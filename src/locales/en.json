@@ -20,5 +20,22 @@
   "success": "Success",
   "loginSuccess": "You are now logged in !",
   "error": "Error",
-  "loginError": "An error occured while trying to log you in"
+  "loginError": "An error occured while trying to log you in",
+  "logoutSuccess": "You are now logged out !",
+  "logoutMessage": "Are you sure you want to logout ?",
+  "cancel": "Cancel",
+  "confirm": "Confirm",
+  "yes": "Yes",
+  "no": "No",
+  "profil": "Profil",
+  "user": "User",
+  "users": "Users",
+  "name": "Name",
+  "firstname": "Firstname",
+  "lastname": "Lastname",
+  "role": "Role",
+  "roles": "Roles",
+  "roleName": "Role name",
+  "roleDescription": "Role description",
+  "username": "Username"
 }

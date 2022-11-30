@@ -43,8 +43,8 @@ export default {
         title: this.$t("loginSuccess"),
         toast: true,
         icon: "success",
-        position: "top-right",
-        duration: 1500,
+        timer: 1500,
+        position: "top-end",
         timerProgressBar: true,
         showConfirmButton: false
       },
@@ -52,8 +52,8 @@ export default {
         title: this.$t("loginError"),
         toast: true,
         icon: "error",
-        position: "top-right",
-        duration: 1500,
+        timer: 1500,
+        position: "top-end",
         timerProgressBar: true,
         showConfirmButton: false
       }
