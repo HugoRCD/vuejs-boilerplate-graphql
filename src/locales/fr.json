@@ -15,5 +15,6 @@
   "resetPassword": "Réinitialiser le mot de passe",
   "sendPasswordResetLink": "Envoyer le lien de réinitialisation",
   "loginText": "Connectez-vous pour accéder à votre compte",
-  "signupText": "Inscrivez-vous pour créer un compte"
+  "signupText": "Inscrivez-vous pour créer un compte",
+  "languageChanged": "La langue a été changée avec succès"
 }

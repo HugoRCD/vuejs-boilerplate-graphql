@@ -10,15 +10,26 @@ export default {
   name: "LocaleSwitcher",
   data() {
     return {
-      theme: "dark"
+      theme: "dark",
+      toast: {
+        toast: true,
+        icon: "success",
+        title: this.$t("languageChanged"),
+        timer: 1500,
+        position: "top-end",
+        timerProgressBar: true,
+        showConfirmButton: false
+      }
     }
   },
   methods: {
     changeLocale() {
       if (this.$i18n.locale === "fr") {
         this.$i18n.locale = "en";
+        this.$swal(this.toast);
       } else {
         this.$i18n.locale = "fr";
+        this.$swal(this.toast);
       }
     }
   }

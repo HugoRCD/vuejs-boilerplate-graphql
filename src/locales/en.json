@@ -15,5 +15,6 @@
   "resetPassword": "Reset password",
   "sendPasswordResetLink": "Send password reset link",
   "loginText": "Login with your email and password",
-  "signupText": "Sign-up to create your account"
+  "signupText": "Sign-up to create your account",
+  "languageChanged": "Language changed"
 }
