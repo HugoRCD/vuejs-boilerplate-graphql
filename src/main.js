@@ -13,7 +13,7 @@ import { createApolloProvider } from '@vue/apollo-option'
 import { concat } from '@apollo/client/link/core'
 
 const httpLink = createHttpLink({
-    uri: 'http://localhost:3000/graphql' // process.env.VUE_APP_API_URL
+    uri: process.env.VUE_APP_API_URL || 'http://localhost:3000/graphql',
 })
 
 const authMiddleware = new ApolloLink((operation, forward) => {
