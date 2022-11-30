@@ -4,16 +4,17 @@
       <div class="signup-header">
         <h1>{{ $t("signup") }}</h1>
         <p>{{ $t("signupText") }}</p>
+        <p>{{ user }}</p>
       </div>
       <div class="signup-form">
         <form>
           <div class="form-group">
             <label for="email">{{ $t("email") }}</label>
-            <input type="email" id="email" placeholder="contact@gmail.com" />
+            <input class="input" type="email" id="email" placeholder="contact@gmail.com" v-model="user.email" />
           </div>
           <div class="form-group">
             <label for="password">{{ $t("password") }}</label>
-            <input type="password" id="password" placeholder="123soleil" />
+            <input class="input" type="password" id="password" placeholder="123soleil" v-model="user.password" />
           </div>
           <div class="form-group">
             <Button :text="$t('signup')" :color="'primary'" />
@@ -21,7 +22,7 @@
         </form>
       </div>
       <div class="signup-footer">
-        <p>{{ $t("noAccount") }} <router-link to="/login">{{ $t("signup") }}</router-link></p>
+        <p>{{ $t("alreadyHaveAccount") }} <router-link to="/login">{{ $t("login") }}</router-link></p>
       </div>
     </div>
   </div>
@@ -37,8 +38,10 @@ export default {
   },
   data() {
     return {
-      email: "",
-      password: "",
+      user: {
+        email: "",
+        password: "",
+      },
     };
   },
 }
@@ -76,17 +79,6 @@ export default {
             display: block;
             font-size: 0.9rem;
             margin-bottom: 0.5rem;
-          }
-          input {
-            width: 100%;
-            padding: 0.5rem;
-            border: 1px solid var(--border-color);
-            border-radius: var(--border-radius);
-            outline: none;
-            color: var(--font-color-secondary);
-            &:focus {
-              border-color: var(--accent);
-            }
           }
         }
       }

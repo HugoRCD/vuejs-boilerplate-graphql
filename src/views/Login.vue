@@ -9,11 +9,11 @@
         <form>
           <div class="form-group">
             <label for="email">{{ $t("email") }}</label>
-            <input type="email" id="email" placeholder="contact@gmail.com" />
+            <input class="input" type="email" id="email" placeholder="contact@gmail.com" v-model="user.email" />
           </div>
           <div class="form-group">
             <label for="password">{{ $t("password") }}</label>
-            <input type="password" id="password" placeholder="123soleil" />
+            <input class="input" type="password" id="password" placeholder="123soleil" v-model="user.password" />
           </div>
           <div class="form-group">
             <Button :text="$t('login')" :color="'primary'" />
@@ -37,8 +37,10 @@ export default {
   },
   data() {
     return {
-      email: "",
-      password: "",
+      user: {
+        email: "",
+        password: "",
+      },
     };
   },
 }
