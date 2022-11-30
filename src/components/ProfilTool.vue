@@ -6,7 +6,7 @@
     <i v-else class="fas fa-chevron-up fa-xs"></i>
   </div>
 
-  <div class="profil-section" v-if="menuOpen">
+  <div class="profil-section" v-if="menuOpen" v-click-outside="() => hide()">
     <div class="card dropdown-profil">
       <div class="dropdown-profil-container">
         <div class="dropdown-profil-header">
@@ -37,7 +37,7 @@ export default {
   data() {
     return {
       user: null,
-      menuOpen: false
+      menuOpen: true
     }
   },
   created() {
@@ -56,6 +56,14 @@ export default {
     }
   },
   methods: {
+    handleFocus() {
+      console.log("focus");
+      this.menuOpen = true;
+    },
+    hide() {
+      console.log("focus out");
+      this.menuOpen = false;
+    },
     toggleProfil() {
       this.menuOpen = !this.menuOpen;
     },

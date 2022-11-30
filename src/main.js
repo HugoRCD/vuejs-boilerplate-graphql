@@ -8,6 +8,8 @@ import i18n from './plugins/i18n';
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 
+import clickOutside from "./plugins/directives.js";
+
 import {ApolloClient, ApolloLink, createHttpLink, InMemoryCache} from '@apollo/client/core'
 import { createApolloProvider } from '@vue/apollo-option'
 import { concat } from '@apollo/client/link/core'
@@ -35,7 +37,12 @@ const apolloProvider = createApolloProvider({
     defaultClient: client,
 })
 
-createApp(App).use(i18n).use(store)
-    .use(router).use(i18n).use(VueSweetalert2)
+createApp(App)
+    .use(i18n)
+    .use(store)
+    .use(router)
+    .use(i18n)
+    .use(VueSweetalert2)
     .use(apolloProvider)
+    .use(clickOutside)
     .mount('#app')
