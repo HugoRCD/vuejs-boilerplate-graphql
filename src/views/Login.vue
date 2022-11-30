@@ -68,6 +68,8 @@ export default {
           user {
             id
             username
+            firstname
+            lastname
             email
             role
           }

@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard">
-    <h1>Bienvenue {{ username }}</h1>
+    <h1>{{ $t("hello") }} {{ username }}</h1>
   </div>
 </template>
 
@@ -14,7 +14,6 @@ export default {
   },
   created() {
     this.username = this.$store.getters.user.username;
-    console.log(this.username);
   }
 }
 </script>

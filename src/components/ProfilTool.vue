@@ -12,11 +12,15 @@
         <div class="dropdown-profil-header">
           <div class="profil-item">
             <i class="fas fa-user-circle fa-xl"></i>
-            <h1>{{ user.username }}</h1>
+            <h1>{{ user.firstname }} {{ user.lastname }}</h1>
           </div>
           <div class="profil-item">
             <i class="fas fa-envelope fa-xl"></i>
             <h1>{{ user.email }}</h1>
+          </div>
+          <div class="profil-item">
+            <i class="fas fa-user-tag fa-xl"></i>
+            <h1>{{ $t(role) }}</h1>
           </div>
         </div>
         <div class="dropdown-profil-footer">
@@ -42,6 +46,13 @@ export default {
   computed: {
     user() {
       return this.$store.getters.user;
+    },
+    role() {
+      if (this.user.role === 1) {
+        return "admin";
+      } else if (this.user.role === 0) {
+        return "user";
+      }
     }
   },
   methods: {

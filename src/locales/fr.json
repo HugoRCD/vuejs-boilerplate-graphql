@@ -38,5 +38,7 @@
   "roleName": "Nom du rôle",
   "roleDescription": "Description du rôle",
   "username": "Nom d'utilisateur",
-  "dashboard": "Tableau de bord"
+  "dashboard": "Tableau de bord",
+  "admin": "Administrateur",
+  "hello": "Bonjour"
 }
