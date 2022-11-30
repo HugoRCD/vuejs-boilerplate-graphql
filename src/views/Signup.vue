@@ -1,6 +1,6 @@
 <template>
   <div class="signup">
-    <div class="signup-container">
+    <div class="card signup-container">
       <div class="signup-header">
         <h1>{{ $t("signup") }}</h1>
         <p>{{ $t("signupText") }}</p>
@@ -8,11 +8,11 @@
       </div>
       <div class="signup-form">
         <div class="form-group">
-          <label for="email">{{ $t("email") }}</label>
+          <label class="label" for="email">{{ $t("email") }}</label>
           <input class="input" type="email" id="email" placeholder="contact@gmail.com" v-model="user.email"/>
         </div>
         <div class="form-group">
-          <label for="password">{{ $t("password") }}</label>
+          <label class="label" for="password">{{ $t("password") }}</label>
           <input class="input" type="password" id="password" placeholder="123soleil" v-model="user.password"/>
         </div>
         <div class="form-group">
@@ -52,10 +52,7 @@ export default {
 
   .signup-container {
     width: 400px;
-    background-color: var(--bg);
-    border-radius: var(--border-radius);
     padding: 2rem;
-    box-shadow: var(--box-shadow);
 
     .signup-header {
       text-align: center;
@@ -76,12 +73,6 @@ export default {
 
       .form-group {
         margin-bottom: 1rem;
-
-        label {
-          display: block;
-          font-size: 0.9rem;
-          margin-bottom: 0.5rem;
-        }
       }
     }
 

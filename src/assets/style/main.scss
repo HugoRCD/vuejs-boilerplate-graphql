@@ -29,6 +29,7 @@
   --font-base: 1rem;
   --font-lg: 1.125rem;
   --font-xl: 1.25rem;
+  --font-bold: 600;
 
   --btn-padding: 0.35rem 1rem;
   --btn-radius: 0.25rem;
@@ -59,6 +60,23 @@ body {
   }
 }
 
+// Card styles
+.card {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--bg-tertiary);
+  border-radius: var(--btn-radius);
+  padding: 1rem;
+  margin: 1rem;
+}
+
+// Label styles
+.label {
+  display: block;
+  font-size: var(--font-sm);
+  margin-bottom: 0.5rem;
+  font-weight: var(--font-bold);
+}
+
 // Input styles
 .input {
   width: 100%;
@@ -70,6 +88,7 @@ body {
 }
 
 // Button styles
+
 .btn-primary {
   padding: var(--btn-padding);
   border-radius: var(--btn-radius);
