@@ -16,7 +16,7 @@
             <input class="input" type="password" id="password" placeholder="123soleil" v-model="user.password" />
           </div>
           <div class="form-group">
-            <Button :text="$t('login')" :color="'primary'" />
+            <button class="btn-primary">{{ $t("signup") }}</button>
           </div>
         </form>
       </div>
@@ -28,13 +28,9 @@
 </template>
 
 <script>
-import Button from "@/components/Button";
 
 export default {
   name: "Login",
-  components: {
-    Button,
-  },
   data() {
     return {
       user: {

@@ -1,7 +1,7 @@
 <template>
   <div class="navbar">
     <div class="logo-section">
-      <img src="../assets/logo.png" alt="logo">
+      <img src="../assets/media/logo.png" alt="logo">
       <h1>Vue Template</h1>
     </div>
     <div class="nav-container">
@@ -10,10 +10,10 @@
       </div>
       <div class="nav-button">
         <router-link to="/login">
-          <Button :text="$t('login')" :color="'primary'"/>
+          <button class="btn-secondary">{{ $t("login") }}</button>
         </router-link>
         <router-link to="/signup">
-          <Button :text="$t('signup')" :color="'secondary'"/>
+          <button class="btn-primary">{{ $t("signup") }}</button>
         </router-link>
         <ThemeSwitcher/>
         <LanguageSelector/>
@@ -34,10 +34,10 @@
     </div>
     <div class="dropdown-button">
       <router-link to="/login">
-        <Button :text="$t('login')" :color="'primary'"/>
+        <button class="btn-secondary">{{ $t("login") }}</button>
       </router-link>
       <router-link to="/signup">
-        <Button :text="$t('signup')" :color="'secondary'"/>
+        <button class="btn-primary">{{ $t("signup") }}</button>
       </router-link>
     </div>
     <div class="dropdown-button">
@@ -50,13 +50,11 @@
 <script>
 import ThemeSwitcher from "@/components/ThemeSwitcher";
 import LanguageSelector from '@/components/LanguageSelector.vue'
-import Button from "@/components/Button";
 
 export default {
   name: "Navbar",
   components: {
     ThemeSwitcher,
-    Button,
     LanguageSelector
   },
   data() {
