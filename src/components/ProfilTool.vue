@@ -37,7 +37,7 @@ export default {
   data() {
     return {
       user: null,
-      menuOpen: true
+      menuOpen: false
     }
   },
   created() {
