@@ -6,7 +6,9 @@
     </div>
     <div class="nav-container">
       <div class="nav-link">
-        <router-link v-for="link in navLinks" :key="link.link" :to="link.link">{{ link.name }}</router-link>
+        <router-link v-for="link in navLinks" :key="link.link" :to="link.link">
+          {{ $t(link.name) }}
+        </router-link>
       </div>
       <div class="nav-button">
         <router-link to="/login">
@@ -62,15 +64,15 @@ export default {
       showMenu: false,
       navLinks: [
         {
-          name: this.$t("home"),
+          name: "home",
           link: "/"
         },
         {
-          name: this.$t("about"),
+          name: "about",
           link: "/about"
         },
         {
-          name: this.$t("contact"),
+          name: "contact",
           link: "/contact"
         }
       ]
