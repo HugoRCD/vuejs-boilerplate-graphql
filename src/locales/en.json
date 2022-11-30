@@ -16,5 +16,9 @@
   "sendPasswordResetLink": "Send password reset link",
   "loginText": "Login with your email and password",
   "signupText": "Sign-up to create your account",
-  "languageChanged": "Language changed"
+  "languageChanged": "Language changed",
+  "success": "Success",
+  "loginSuccess": "You are now logged in !",
+  "error": "Error",
+  "loginError": "An error occured while trying to log you in"
 }

@@ -16,5 +16,9 @@
   "sendPasswordResetLink": "Envoyer le lien de réinitialisation",
   "loginText": "Connectez-vous pour accéder à votre compte",
   "signupText": "Inscrivez-vous pour créer un compte",
-  "languageChanged": "La langue a été changée avec succès"
+  "languageChanged": "La langue a été changée avec succès",
+  "success": "Succès",
+  "loginSuccess": "Vous êtes connecté avec succès !",
+  "error": "Erreur",
+  "loginError": "Une erreur est survenue lors de la connexion"
 }

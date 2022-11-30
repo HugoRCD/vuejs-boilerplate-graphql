@@ -15,7 +15,7 @@
           <input class="input" type="password" id="password" placeholder="123soleil" v-model="user.password"/>
         </div>
         <div class="form-group">
-          <button class="btn-primary" @click="login()">{{ $t("signup") }}</button>
+          <button class="btn-primary" @click.prevent="login()">{{ $t("login") }}</button>
         </div>
       </div>
       <div class="login-footer">
@@ -29,26 +29,66 @@
 
 <script>
 
+import gql from "graphql-tag";
+
 export default {
   name: "Login",
   data() {
     return {
       user: {
-        email: "",
-        password: "",
+        email: null,
+        password: null
       },
+      toast_success: {
+        title: this.$t("loginSuccess"),
+        toast: true,
+        icon: "success",
+        position: "top-right",
+        duration: 1500,
+        timerProgressBar: true,
+        showConfirmButton: false
+      },
+      toast_error: {
+        title: this.$t("loginError"),
+        toast: true,
+        icon: "error",
+        position: "top-right",
+        duration: 1500,
+        timerProgressBar: true,
+        showConfirmButton: false
+      }
     };
   },
   methods: {
-    login() {
-      this.$swal.fire({
-        title: this.$t("login"),
-        text: this.$t("loginText"),
-        icon: "success",
-        confirmButtonText: this.$t("ok"),
+    async login() {
+      this.$apollo.mutate({
+        mutation: gql`mutation login {
+        authLogin(username: "${this.user.email}", password: "${this.user.password}") {
+          token
+          user {
+            id
+            username
+            email
+            role
+          }
+        }
+      }`
+      }).then((response) => {
+        const token = response.data.authLogin.token;
+        const user = response.data.authLogin.user;
+        if (token) {
+          this.$store.dispatch("login", { token, user });
+          localStorage.setItem("token", response.data.authLogin.token);
+          this.$router.push("/dashboard");
+          this.$swal(this.toast_success);
+        } else {
+          this.$swal(this.toast_error);
+        }
+      }).catch(() => {
+        this.$swal(this.toast_error);
       });
-    },
-  },
+    }
+  }
 }
 </script>
 

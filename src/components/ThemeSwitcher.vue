@@ -1,7 +1,7 @@
 <template>
   <div class="theme-switcher" @click="changeTheme">
-    <i v-if="theme === 'light'" class="fa-sharp fa-solid fa-moon fa-xl"></i>
-    <i v-else class="fa-sharp fa-solid fa-sun fa-xl"></i>
+    <i v-if="theme === 'light'" class="fa-sharp fa-solid fa-moon fa-lg"></i>
+    <i v-else class="fa-sharp fa-solid fa-sun fa-lg"></i>
   </div>
 </template>
 

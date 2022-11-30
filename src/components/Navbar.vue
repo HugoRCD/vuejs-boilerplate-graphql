@@ -10,13 +10,18 @@
           {{ $t(link.name) }}
         </router-link>
       </div>
-      <div class="nav-button">
+      <div class="nav-button" v-if="!isLogged">
         <router-link to="/login">
           <button class="btn-secondary">{{ $t("login") }}</button>
         </router-link>
         <router-link to="/signup">
           <button class="btn-primary">{{ $t("signup") }}</button>
         </router-link>
+        <ThemeSwitcher/>
+        <LanguageSelector/>
+      </div>
+      <div class="nav-button" v-else>
+        <button class="btn-primary" @click.prevent="logout()">{{ $t("logout") }}</button>
         <ThemeSwitcher/>
         <LanguageSelector/>
       </div>
@@ -62,6 +67,7 @@ export default {
   data() {
     return {
       showMenu: false,
+      isLogged: false,
       navLinks: [
         {
           name: "home",
@@ -78,10 +84,22 @@ export default {
       ]
     }
   },
+  created() {
+    this.isLogged = this.$store.getters.isLoggedIn;
+  },
+  computed: {
+    isLogged() {
+      return this.$store.getters.isLoggedIn;
+    }
+  },
   methods: {
     toggleMenu() {
       this.showMenu = !this.showMenu
     },
+    logout() {
+      this.$store.dispatch("logout")
+      this.$router.push("/login")
+    }
   },
 }
 </script>
