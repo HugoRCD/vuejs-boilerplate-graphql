@@ -12,6 +12,15 @@ export default {
   name: "App",
   components: {
     Navbar
+  },
+  created() {
+    if (localStorage.getItem('token')) {
+      this.$store.dispatch('login', {
+        token: localStorage.getItem('token'),
+        user: JSON.parse(localStorage.getItem('user'))
+      });
+    }
+    this.$router.push('/dashboard');
   }
 }
 </script>

@@ -21,7 +21,7 @@
         <LanguageSelector/>
       </div>
       <div class="nav-button" v-else>
-        <i class="fas fa-user-circle fa-xl" @click="toggleProfil"></i>
+        <ProfilTool />
         <ThemeSwitcher/>
         <LanguageSelector/>
       </div>
@@ -30,18 +30,6 @@
       </div>
       <div v-else class="burger-menu" @click="toggleMenu">
         <i class="fa-sharp fa-solid fa-times fa-xl"></i>
-      </div>
-    </div>
-  </div>
-  <div class="card dropdown-profil" v-if="showProfil">
-    <div class="dropdown-profil-container">
-      <div class="dropdown-profil-header">
-        <h1>{{ $t("profil") }}</h1>
-        <i class="fas fa-user-circle fa-xl"></i>
-        <p>{{ $t("username") }}: {{ user.username }}</p>
-      </div>
-      <div class="dropdown-profil-footer">
-        <button class="btn-primary" @click="logout()">{{ $t("logout") }}</button>
       </div>
     </div>
   </div>
@@ -72,17 +60,18 @@
 <script>
 import ThemeSwitcher from "@/components/ThemeSwitcher";
 import LanguageSelector from '@/components/LanguageSelector.vue'
+import ProfilTool from "@/components/ProfilTool";
 
 export default {
   name: "Navbar",
   components: {
     ThemeSwitcher,
-    LanguageSelector
+    LanguageSelector,
+    ProfilTool
   },
   data() {
     return {
       showMenu: false,
-      showProfil: false,
       isLogged: false,
       user: null,
       navLinks: [
@@ -106,6 +95,13 @@ export default {
   },
   computed: {
     isLogged() {
+      if (this.$store.getters.isLoggedIn)
+        this.navLinks.push({
+          name: "dashboard",
+          link: "/dashboard"
+        });
+      else
+        this.navLinks = this.navLinks.filter(link => link.name !== "dashboard");
       return this.$store.getters.isLoggedIn;
     },
     user() {
@@ -116,28 +112,6 @@ export default {
     toggleMenu() {
       this.showMenu = !this.showMenu
     },
-    toggleProfil() {
-      this.showProfil = !this.showProfil
-    },
-    logout() {
-      this.$swal({
-        title: this.$t("logout"),
-        text: this.$t("logoutMessage"),
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: this.$t("yes"),
-        cancelButtonText: this.$t("no")
-      }).then(result => {
-        if (result.isConfirmed) {
-          this.$store.dispatch("logout");
-          this.$router.push("/login");
-          this.$swal(this.$t("logout"), this.$t("logoutSuccess"), "success");
-          this.showProfil = false;
-        }
-      });
-    }
   },
 }
 </script>
@@ -197,6 +171,10 @@ export default {
       display: flex;
       align-items: center;
       gap: 1rem;
+
+      i {
+        cursor: pointer;
+      }
     }
 
     .burger-menu {
@@ -256,63 +234,6 @@ export default {
     justify-content: center;
     gap: 1rem;
     padding: 1rem 0;
-  }
-}
-
-.dropdown-profil {
-  position: absolute;
-  top: 4rem;
-  right: 0;
-  width: 20%;
-  background-color: var(--bg-secondary);
-  z-index: 100;
-  padding: 1rem;
-
-  .dropdown-profil-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    height: 100%;
-    gap: 1rem;
-
-    .dropdown-profil-header {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-      > * {
-        margin-bottom: 1rem;
-      }
-
-      h1 {
-        font-size: 1rem;
-        font-weight: 600;
-        color: var(--font-color);
-      }
-
-      i {
-        font-size: 2rem;
-        color: var(--font-color);
-      }
-
-      p {
-        font-size: 0.8rem;
-        font-weight: 500;
-        color: var(--font-color);
-      }
-    }
-
-    .dropdown-profil-footer {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-
-      button {
-        width: 100%;
-      }
-    }
   }
 }
 </style>

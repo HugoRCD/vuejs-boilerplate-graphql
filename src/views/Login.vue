@@ -78,7 +78,8 @@ export default {
         const user = response.data.authLogin.user;
         if (token) {
           this.$store.dispatch("login", { token, user });
-          localStorage.setItem("token", response.data.authLogin.token);
+          localStorage.setItem("token", token);
+          localStorage.setItem("user", JSON.stringify(user));
           this.$router.push("/dashboard");
           this.$swal(this.toast_success);
         } else {

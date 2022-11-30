@@ -37,5 +37,6 @@
   "roles": "Roles",
   "roleName": "Role name",
   "roleDescription": "Role description",
-  "username": "Username"
+  "username": "Username",
+  "dashboard": "Dashboard"
 }
