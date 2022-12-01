@@ -28,7 +28,6 @@
 </template>
 
 <script>
-
 import gql from "graphql-tag";
 
 export default {
@@ -79,7 +78,7 @@ export default {
         const token = response.data.authLogin.token;
         const user = response.data.authLogin.user;
         if (token) {
-          this.$store.dispatch("login", { token, user });
+          this.$store.dispatch("login", {token, user});
           localStorage.setItem("token", token);
           localStorage.setItem("user", JSON.stringify(user));
           this.$router.push("/dashboard");

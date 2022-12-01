@@ -36,7 +36,14 @@ export default {
   name: "ProfilTool",
   data() {
     return {
-      user: null,
+      user: {
+        id: null,
+        username: null,
+        firstname: null,
+        lastname: null,
+        email: null,
+        role: null
+      },
       menuOpen: false
     }
   },
@@ -56,12 +63,7 @@ export default {
     }
   },
   methods: {
-    handleFocus() {
-      console.log("focus");
-      this.menuOpen = true;
-    },
     hide() {
-      console.log("focus out");
       this.menuOpen = false;
     },
     toggleProfil() {
