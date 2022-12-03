@@ -35,10 +35,10 @@
       </div>
     </div>
   </div>
-  <div class="dropdown-menu" v-if="showMenu">
+  <div class="dropdown-menu" v-if="showMenu" v-click-outside="hide">
     <div class="dropdown-link">
-      <router-link v-for="link in nav" :key="link.link" :to="link.link">
-        {{ $t(link.name) }}
+      <router-link v-for="link in nav" :key="link.link" :to="link.link" @click="hide">
+        {{ $t(link.name.toLowerCase()) }}
       </router-link>
     </div>
     <div class="dropdown-button" v-if="!isLogged">
@@ -128,6 +128,9 @@ export default {
     toggleMenu() {
       this.showMenu = !this.showMenu
     },
+    hide() {
+      this.showMenu = false
+    }
   },
 }
 </script>

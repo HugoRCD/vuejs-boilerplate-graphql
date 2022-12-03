@@ -93,17 +93,22 @@ function isTokenExpired(token) {
 
 router.beforeEach((to, from, next) => {
     if (to.matched.some((record) => record.meta.requiresAuth)) {
-        if (!store.getters.isLoggedIn) {
-            next();
-        } else {
+        if (store.getters.isLoggedIn) {
             if (isTokenExpired(store.state.token)) {
-                store.dispatch('logout')
+                store.dispatch("logout");
+                localStorage.removeItem("token");
+                localStorage.removeItem("user");
                 next({
                     path: 'auth/login',
-                    query: {redirect: to.fullPath},
                 });
+            } else {
+                next();
             }
-            next();
+        } else {
+            next({
+                path: 'auth/login',
+                query: {redirect: to.fullPath},
+            });
         }
     } else {
         next();
