@@ -23,7 +23,7 @@
         <LanguageSelector/>
       </div>
       <div class="nav-button" v-else>
-        <ProfilTool />
+        <ProfilTool/>
         <ThemeSwitcher/>
         <LanguageSelector/>
       </div>
