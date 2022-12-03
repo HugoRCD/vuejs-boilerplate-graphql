@@ -48,6 +48,7 @@ export default {
       h1 {
         font-size: 1.5rem;
         font-weight: 600;
+        color: var(--font-color);
       }
     }
     .nav-button {

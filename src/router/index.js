@@ -88,8 +88,6 @@ function isTokenExpired(token) {
     );
 
     const { exp } = JSON.parse(jsonPayload);
-    console.log(exp)
-    console.log(Date.now() >= exp * 1000)
     return Date.now() >= exp * 1000
 }
 
@@ -105,6 +103,7 @@ router.beforeEach((to, from, next) => {
                     query: {redirect: to.fullPath},
                 });
             }
+            next();
         }
     } else {
         next();

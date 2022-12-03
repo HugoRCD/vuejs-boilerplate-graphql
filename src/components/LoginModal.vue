@@ -131,8 +131,3 @@ export default {
   }
 }
 </style>
-
-<!--
-
-Et j'ai pas dis ca pour te briser juste pour pas que tu oublie certaines choses parce que ca compte beaucoup aussi bien pour moi que pour toi alors même
-si c'est pas agrèable à attendre des fois il faut que quelqu'un s'en charge au risque de passer pour le méchant@-->

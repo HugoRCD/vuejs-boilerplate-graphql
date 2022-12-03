@@ -8,8 +8,8 @@
     </router-link>
     <div class="nav-container">
       <div class="nav-link">
-        <router-link v-for="link in nav" :key="link.link" :to="link.link">
-          {{ $t(link.name) }}
+        <router-link v-for="link in nav" :key="link.link" :to="{ name: link.name }">
+          {{ $t(link.name.toLowerCase()) }}
         </router-link>
       </div>
       <div class="nav-button" v-if="!isLogged">
@@ -37,9 +37,9 @@
   </div>
   <div class="dropdown-menu" v-if="showMenu">
     <div class="dropdown-link">
-      <router-link :to="{ name: 'Home' }">{{ $t("home") }}</router-link>
-      <router-link :to="{ name: 'About' }">{{ $t("about") }}</router-link>
-      <router-link :to="{ name: 'Contact' }">{{ $t("contact") }}</router-link>
+      <router-link v-for="link in nav" :key="link.link" :to="link.link">
+        {{ $t(link.name) }}
+      </router-link>
     </div>
     <div class="dropdown-button" v-if="!isLogged">
       <router-link :to="{ name: 'Login' }">
@@ -77,33 +77,33 @@ export default {
       nav: [],
       navLinks: [
         {
-          name: "home",
+          name: "Home",
           link: "/"
         },
         {
-          name: "about",
+          name: "About",
           link: "/about"
         },
         {
-          name: "contact",
+          name: "Contact",
           link: "/contact"
         }
       ],
       navLinksLogged: [
         {
-          name: "home",
+          name: "Home",
           link: "/"
         },
         {
-          name: "about",
+          name: "About",
           link: "/about"
         },
         {
-          name: "contact",
+          name: "Contact",
           link: "/contact"
         },
         {
-          name: "dashboard",
+          name: "Dashboard",
           link: "/dashboard"
         }
       ]

@@ -39,9 +39,6 @@ export default {
       menuOpen: false
     }
   },
-  created() {
-    this.user = this.$store.getters.user;
-  },
   computed: {
     user() {
       return this.$store.getters.user;
