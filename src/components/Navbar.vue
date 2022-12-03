@@ -1,20 +1,22 @@
 <template>
   <div class="navbar">
-    <div class="logo-section">
-      <img src="../assets/media/logo.png" alt="logo">
-      <h1>Vue Template</h1>
-    </div>
+    <router-link :to="{ name: 'Home' }">
+      <div class="logo-section">
+        <img src="../assets/media/logo.png" alt="logo">
+        <h1>Vue Template</h1>
+      </div>
+    </router-link>
     <div class="nav-container">
       <div class="nav-link">
-        <router-link v-for="link in navLinks" :key="link.link" :to="link.link">
+        <router-link v-for="link in nav" :key="link.link" :to="link.link">
           {{ $t(link.name) }}
         </router-link>
       </div>
       <div class="nav-button" v-if="!isLogged">
-        <router-link to="/login">
+        <router-link :to="{name: 'Login'}">
           <button class="btn-secondary">{{ $t("login") }}</button>
         </router-link>
-        <router-link to="/signup">
+        <router-link :to="{name: 'Signup'}">
           <button class="btn-primary">{{ $t("signup") }}</button>
         </router-link>
         <ThemeSwitcher/>
@@ -35,15 +37,15 @@
   </div>
   <div class="dropdown-menu" v-if="showMenu">
     <div class="dropdown-link">
-      <router-link to="/">{{ $t("home") }}</router-link>
-      <router-link to="/about">{{ $t("about") }}</router-link>
-      <router-link to="/contact">{{ $t("contact") }}</router-link>
+      <router-link :to="{ name: 'Home' }">{{ $t("home") }}</router-link>
+      <router-link :to="{ name: 'About' }">{{ $t("about") }}</router-link>
+      <router-link :to="{ name: 'Contact' }">{{ $t("contact") }}</router-link>
     </div>
     <div class="dropdown-button" v-if="!isLogged">
-      <router-link to="/login">
+      <router-link :to="{ name: 'Login' }">
         <button class="btn-secondary">{{ $t("login") }}</button>
       </router-link>
-      <router-link to="/signup">
+      <router-link :to="{ name: 'Signup' }">
         <button class="btn-primary">{{ $t("signup") }}</button>
       </router-link>
     </div>
@@ -72,8 +74,7 @@ export default {
   data() {
     return {
       showMenu: false,
-      isLogged: false,
-      user: null,
+      nav: [],
       navLinks: [
         {
           name: "home",
@@ -87,21 +88,36 @@ export default {
           name: "contact",
           link: "/contact"
         }
+      ],
+      navLinksLogged: [
+        {
+          name: "home",
+          link: "/"
+        },
+        {
+          name: "about",
+          link: "/about"
+        },
+        {
+          name: "contact",
+          link: "/contact"
+        },
+        {
+          name: "dashboard",
+          link: "/dashboard"
+        }
       ]
     }
   },
   created() {
-    this.isLogged = this.$store.getters.isLoggedIn;
+    this.nav = this.navLinks;
   },
   computed: {
     isLogged() {
       if (this.$store.getters.isLoggedIn)
-        this.navLinks.push({
-          name: "dashboard",
-          link: "/dashboard"
-        });
+        this.nav = this.navLinksLogged;
       else
-        this.navLinks = this.navLinks.filter(link => link.name !== "dashboard");
+        this.nav = this.navLinks;
       return this.$store.getters.isLoggedIn;
     },
     user() {

@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Navbar from '../components/Navbar.vue'
+import Navbar from '../../components/Navbar.vue'
 
 export default {
   name: "App",
@@ -19,8 +19,8 @@ export default {
         token: localStorage.getItem('token'),
         user: JSON.parse(localStorage.getItem('user'))
       });
+      this.$router.push({name: "Dashboard"});
     }
-    this.$router.push('/dashboard');
   }
 }
 </script>

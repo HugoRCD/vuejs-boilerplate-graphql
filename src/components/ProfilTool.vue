@@ -36,14 +36,6 @@ export default {
   name: "ProfilTool",
   data() {
     return {
-      user: {
-        id: null,
-        username: null,
-        firstname: null,
-        lastname: null,
-        email: null,
-        role: null
-      },
       menuOpen: false
     }
   },
@@ -84,7 +76,7 @@ export default {
           this.$store.dispatch("logout");
           localStorage.removeItem("token");
           localStorage.removeItem("user");
-          this.$router.push("/login");
+          this.$router.replace({ name: "Login" });
           this.$swal(this.$t("logout"), this.$t("logoutSuccess"), "success");
           this.menuOpen = false;
         }

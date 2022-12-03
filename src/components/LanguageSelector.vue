@@ -44,7 +44,6 @@ export default {
   cursor: pointer;
   div {
     border-radius: 0.25rem;
-    background-color: var(--bg-secondary);
     color: var(--font-color);
     font-weight: 600;
     font-size: 0.75rem;

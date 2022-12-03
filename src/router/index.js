@@ -1,12 +1,14 @@
 import {createRouter, createWebHistory} from 'vue-router'
-import App from '../views/App.vue'
-import Home from '../views/Home.vue'
-import About from '../views/About.vue'
-import Contact from '../views/Contact.vue'
-import Login from '../views/Login.vue'
-import Signup from '../views/Signup.vue'
+import App from '../views/App/App.vue'
+import Home from '../views/App/Home.vue'
+import About from '../views/App/About.vue'
+import Contact from '../views/App/Contact.vue'
 import error404 from '../views/error404.vue'
-import Dashboard from "../views/Dashboard.vue";
+import Dashboard from "../views/App/Dashboard.vue";
+
+import Auth from "@/views/Auth/Auth.vue";
+import Login from "@/views/Auth/Login.vue";
+import Signup from "@/views/Auth/Signup.vue";
 
 import store from "@/store";
 
@@ -36,11 +38,6 @@ const routes = [
                 component: Login,
             },
             {
-                path: '/signup',
-                name: 'Signup',
-                component: Signup,
-            },
-            {
                 path: '/dashboard',
                 name: 'Dashboard',
                 component: Dashboard,
@@ -48,6 +45,22 @@ const routes = [
                     requiresAuth: true
                 }
             },
+        ]
+    },
+    {
+        path: '/auth',
+        component: Auth,
+        children: [
+            {
+                path: 'signup',
+                name: 'Signup',
+                component: Signup
+            },
+            {
+                path: 'login',
+                name: 'Login',
+                component: Login
+            }
         ]
     },
     {
@@ -62,14 +75,36 @@ const router = createRouter({
     routes
 })
 
+function isTokenExpired(token) {
+    const base64Url = token.split(".")[1];
+    const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+    const jsonPayload = decodeURIComponent(
+        atob(base64)
+            .split("")
+            .map(function (c) {
+                return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+            })
+            .join("")
+    );
+
+    const { exp } = JSON.parse(jsonPayload);
+    console.log(exp)
+    console.log(Date.now() >= exp * 1000)
+    return Date.now() >= exp * 1000
+}
+
 router.beforeEach((to, from, next) => {
     if (to.matched.some((record) => record.meta.requiresAuth)) {
         if (!store.getters.isLoggedIn) {
-            next({
-                path: "/",
-            });
-        } else {
             next();
+        } else {
+            if (isTokenExpired(store.state.token)) {
+                store.dispatch('logout')
+                next({
+                    path: 'auth/login',
+                    query: {redirect: to.fullPath},
+                });
+            }
         }
     } else {
         next();

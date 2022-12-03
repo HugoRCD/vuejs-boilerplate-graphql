@@ -21,7 +21,7 @@
       </div>
       <div class="signup-footer">
         <p>{{ $t("alreadyHaveAccount") }}
-          <router-link to="/login">{{ $t("login") }}</router-link>
+          <router-link :to="{name: 'Login'}">{{ $t("login") }}</router-link>
         </p>
       </div>
     </div>
