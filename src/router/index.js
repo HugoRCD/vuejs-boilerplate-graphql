@@ -10,6 +10,10 @@ import Auth from "@/views/Auth/Auth.vue";
 import Login from "@/views/Auth/Login.vue";
 import Signup from "@/views/Auth/Signup.vue";
 
+import Profile from "@/views/Profile/Profile.vue";
+import Account from "@/views/Profile/Account.vue";
+import Settings from "@/views/Profile/Settings.vue";
+
 import store from "@/store";
 
 const routes = [
@@ -62,6 +66,25 @@ const routes = [
                 component: Login
             }
         ]
+    },
+    {
+        path: '/profile',
+        component: Profile,
+        children: [
+            {
+                path: 'account',
+                name: 'Account',
+                component: Account,
+            },
+            {
+                path: 'settings',
+                name: 'Settings',
+                component: Settings,
+            }
+        ],
+        meta: {
+            requiresAuth: true
+        }
     },
     {
         path: '/:catchAll(.*)',

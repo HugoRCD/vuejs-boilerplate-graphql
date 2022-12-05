@@ -6,25 +6,15 @@
     <i v-else class="fas fa-chevron-up fa-xs"></i>
   </div>
 
-  <div class="profil-section" v-if="menuOpen" v-click-outside="() => hide()">
-    <div class="card dropdown-profil">
+  <div class="profil-section" v-if="menuOpen" v-click-outside="hide">
+    <div class="dropdown-profil">
       <div class="dropdown-profil-container">
-        <div class="dropdown-profil-header">
-          <div class="profil-item">
-            <i class="fas fa-user-circle fa-xl"></i>
-            <h1>{{ user.firstname }} {{ user.lastname }}</h1>
-          </div>
-          <div class="profil-item">
-            <i class="fas fa-envelope fa-xl"></i>
-            <h1>{{ user.email }}</h1>
-          </div>
-          <div class="profil-item">
-            <i class="fas fa-user-tag fa-xl"></i>
-            <h1>{{ $t(role) }}</h1>
-          </div>
-        </div>
-        <div class="dropdown-profil-footer">
-          <button class="btn-primary" @click="logout()">{{ $t("logout") }}</button>
+        <router-link class="dropdown-profil-item" v-for="link in navLinks" :key="link.path" :to="{ name: link.name }" @click="hide">
+          {{ $t(link.name.toLowerCase()) }}
+        </router-link>
+        <div class="separator"></div>
+        <div class="dropdown-profil-item logout" @click="logout()">
+          {{ $t("logout") }}
         </div>
       </div>
     </div>
@@ -36,7 +26,17 @@ export default {
   name: "ProfilTool",
   data() {
     return {
-      menuOpen: false
+      menuOpen: false,
+      navLinks: [
+        {
+          name: "Account",
+          path: "/account"
+        },
+        {
+          name: "Settings",
+          path: "/settings"
+        }
+      ]
     }
   },
   computed: {
@@ -73,7 +73,7 @@ export default {
           this.$store.dispatch("logout");
           localStorage.removeItem("token");
           localStorage.removeItem("user");
-          this.$router.replace({ name: "Login" });
+          this.$router.push({name: "Login"});
           this.$swal(this.$t("logout"), this.$t("logoutSuccess"), "success");
           this.menuOpen = false;
         }
@@ -89,14 +89,13 @@ export default {
   user-select: none;
   display: flex;
   align-items: center;
-  justify-content: center;
   cursor: pointer;
   gap: 0.70rem;
   background-color: var(--bg-tertiary);
-  border-radius: var(--btn-radius);
-  padding: 0.5rem;
   color: var(--font-color);
   transition: all 0.3s ease-in-out;
+  border-radius: 1.5rem;
+  padding: 0.3rem;
 
   h1 {
     font-size: 1rem;
@@ -110,43 +109,53 @@ export default {
 }
 
 .profil-section {
+  user-select: none;
   position: absolute;
-  top: 100%;
-  right: 0;
-  z-index: 100;
   color: var(--font-color);
+  background-color: var(--bg-secondary);
+  font-size: var(--font-sm);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 0.25rem;
+  top: 110%;
+  right: 8%;
 
   .dropdown-profil {
-    width: 15rem;
-    background-color: var(--bg-secondary);
-    border-radius: var(--btn-radius);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 10rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease-in-out;
 
     .dropdown-profil-container {
-      padding: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
 
-      .dropdown-profil-header {
+      .dropdown-profil-item {
+        width: 100%;
         display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-        font-size: var(--font-sm);
+        padding: 0.5rem;
+        cursor: pointer;
 
-        .profil-item {
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
-          margin-bottom: 0.5rem;
+        &:hover {
+          background-color: var(--bg-primary);
         }
       }
 
-      .dropdown-profil-footer {
-        display: flex;
-        justify-content: center;
-        margin-top: 1rem;
-
-        button {
-          width: 100%;
+      .dropdown-profil-item.logout {
+        &:hover {
+          background-color: #990c0c;
         }
+      }
+
+      .separator {
+        width: 100%;
+        height: 1px;
+        background-color: var(--bg-tertiary);
+        margin: 0.5rem 0;
       }
     }
   }

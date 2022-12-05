@@ -37,7 +37,7 @@
   </div>
   <div class="dropdown-menu" v-if="showMenu" v-click-outside="hide">
     <div class="dropdown-link">
-      <router-link v-for="link in nav" :key="link.link" :to="link.link" @click="hide">
+      <router-link v-for="link in nav" :key="link.path" :to="link.path" @click="hide">
         {{ $t(link.name.toLowerCase()) }}
       </router-link>
     </div>
@@ -78,33 +78,33 @@ export default {
       navLinks: [
         {
           name: "Home",
-          link: "/"
+          path: "/"
         },
         {
           name: "About",
-          link: "/about"
+          path: "/about"
         },
         {
           name: "Contact",
-          link: "/contact"
+          path: "/contact"
         }
       ],
       navLinksLogged: [
         {
           name: "Home",
-          link: "/"
+          path: "/"
         },
         {
           name: "About",
-          link: "/about"
+          path: "/about"
         },
         {
           name: "Contact",
-          link: "/contact"
+          path: "/contact"
         },
         {
           name: "Dashboard",
-          link: "/dashboard"
+          path: "/dashboard"
         }
       ]
     }
