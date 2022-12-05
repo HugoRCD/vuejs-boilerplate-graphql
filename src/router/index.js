@@ -1,18 +1,18 @@
 import {createRouter, createWebHistory} from 'vue-router'
-import App from '../views/App/App.vue'
-import Home from '../views/App/Home.vue'
-import About from '../views/App/About.vue'
-import Contact from '../views/App/Contact.vue'
-import error404 from '../views/error404.vue'
-import Dashboard from "../views/App/Dashboard.vue";
+import App from '@/views/App/App.vue'
+import Home from '@/views/App/Home.vue'
+import About from '@/views/App/About.vue'
+import Contact from '@/views/App/Contact.vue'
+import error404 from '@/views/error404.vue'
+import Dashboard from "@/views/App/Dashboard.vue";
 
 import Auth from "@/views/Auth/Auth.vue";
 import Login from "@/views/Auth/Login.vue";
 import Signup from "@/views/Auth/Signup.vue";
 
-import Profile from "@/views/Profile/Profile.vue";
-import Account from "@/views/Profile/Account.vue";
-import Settings from "@/views/Profile/Settings.vue";
+import Account from "@/views/Account/Account.vue";
+import Profile from "@/views/Account/Profile.vue";
+import Settings from "@/views/Account/Settings.vue";
 
 import store from "@/store";
 
@@ -68,13 +68,13 @@ const routes = [
         ]
     },
     {
-        path: '/profile',
-        component: Profile,
+        path: '/account',
+        component: Account,
         children: [
             {
-                path: 'account',
-                name: 'Account',
-                component: Account,
+                path: 'profile',
+                name: 'Profile',
+                component: Profile,
             },
             {
                 path: 'settings',

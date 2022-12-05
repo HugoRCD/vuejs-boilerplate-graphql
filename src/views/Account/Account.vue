@@ -1,14 +1,16 @@
 <template>
   <div class="account">
-    <div>
-      {{ $t("account") }} of {{ user.username }}
-    </div>
+    <Navbar/>
+    <router-view/>
   </div>
 </template>
 
 <script>
+import Navbar from "@/components/Navbar.vue";
+
 export default {
   name: "Account",
+  components: {Navbar},
   computed: {
     user() {
       return this.$store.getters.user;
@@ -25,5 +27,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
+.account {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
 </style>

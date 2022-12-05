@@ -1,16 +1,14 @@
 <template>
   <div class="profile">
-    <Navbar/>
-    <router-view/>
+    <div>
+      {{ $t("profile") }} of {{ user.username }}
+    </div>
   </div>
 </template>
 
 <script>
-import Navbar from "@/components/Navbar.vue";
-
 export default {
   name: "Profile",
-  components: {Navbar},
   computed: {
     user() {
       return this.$store.getters.user;
@@ -27,12 +25,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.profile {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-}
+
 </style>

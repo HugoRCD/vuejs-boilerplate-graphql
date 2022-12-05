@@ -29,8 +29,8 @@ export default {
       menuOpen: false,
       navLinks: [
         {
-          name: "Account",
-          path: "/account"
+          name: "Profile",
+          path: "/profile"
         },
         {
           name: "Settings",
