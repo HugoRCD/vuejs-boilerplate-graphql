@@ -23,11 +23,13 @@
         <div class="form-group-infos">
           <div class="form-group">
             <label class="label" for="password">{{ $t("phone") }}</label>
-            <input class="input" type="tel" id="phone" placeholder="(+33) 1 23 45 67 89" v-model="createUserInput.telephone"/>
+            <input class="input" type="tel" id="phone" placeholder="(+33) 1 23 45 67 89"
+                   v-model="createUserInput.telephone"/>
           </div>
           <div class="form-group">
             <label class="label" for="password">{{ $t("birthdate") }}</label>
-            <input class="input" type="date" id="birthdate" placeholder="01/01/2000" v-model="createUserInput.birthdate"/>
+            <input class="input" type="date" id="birthdate" placeholder="01/01/2000"
+                   v-model="createUserInput.birthdate"/>
           </div>
         </div>
         <div class="form-group">
@@ -36,7 +38,8 @@
         </div>
         <div class="form-group">
           <label class="label" for="password">{{ $t("password") }}</label>
-          <input class="input" type="password" id="password" placeholder="123soleil" v-model="createUserInput.password"/>
+          <input class="input" type="password" id="password" placeholder="123soleil"
+                 v-model="createUserInput.password"/>
         </div>
         <div class="form-group" @click="signup">
           <button class="btn-primary">{{ $t("signup") }}</button>
@@ -92,20 +95,33 @@ export default {
       this.$store.dispatch("loading", true);
       this.$apollo.mutate({
         mutation: gql`mutation createUser($createUserInput: CreateUserInput!) {
-          createUser(createUserInput: $createUserInput) {
+          authSignup(user: $createUserInput) {
+            token
             user {
-              id
+              email
               username
+              firstname
+              lastname
+              role
             }
-          }
+        }
         }`,
         variables: {
           createUserInput: this.createUserInput
         }
-      }).then(() => {
-        this.$store.dispatch("loading", false);
-        this.$swal(this.toast_success);
-        this.$router.push({name: "Login"});
+      }).then((response) => {
+        const token = response.data.authSignup.token;
+        const user = response.data.authSignup.user;
+        if (token) {
+          this.$store.dispatch("login", {token, user});
+          localStorage.setItem("token", token);
+          localStorage.setItem("user", JSON.stringify(user));
+          this.$store.dispatch("loading", false);
+          this.$router.push({name: "Home"});
+          this.$swal(this.toast_success);
+        } else {
+          this.$swal(this.toast_error);
+        }
       }).catch(() => {
         this.$store.dispatch("loading", false);
         this.$swal(this.toast_error);
