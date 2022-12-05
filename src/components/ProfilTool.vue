@@ -33,6 +33,10 @@ export default {
           path: "/profile"
         },
         {
+          name: "Dashboard",
+          path: "/dashboard"
+        },
+        {
           name: "Settings",
           path: "/settings"
         }
