@@ -4,7 +4,7 @@
       <h1>{{ $t("login") }}</h1>
       <p>{{ $t("loginText") }}</p>
     </div>
-    <div class="login-form">
+    <div class="login-form" v-if="!loading">
       <div class="form-group">
         <label class="label" for="email">{{ $t("email") }}</label>
         <input class="input" type="email" id="email" placeholder="contact@gmail.com" v-model="user.email"/>
@@ -16,6 +16,10 @@
       <div class="form-group">
         <button class="btn-primary" @click.prevent="login()">{{ $t("login") }}</button>
       </div>
+    </div>
+    <div class="login-footer" v-else>
+      <i class="fa-solid fa-circle-notch fa-spin"></i>
+      <p>{{ $t("loading") }}</p>
     </div>
     <div class="login-footer">
       <p>{{ $t("noAccount") }}
@@ -56,8 +60,14 @@ export default {
       }
     };
   },
+  computed: {
+    loading() {
+      return this.$store.getters.isLoading;
+    }
+  },
   methods: {
     async login() {
+      this.$store.dispatch("loading", true);
       this.$apollo.mutate({
         mutation: gql`mutation login {
         authLogin(username: "${this.user.email}", password: "${this.user.password}") {
@@ -79,13 +89,14 @@ export default {
           this.$store.dispatch("login", {token, user});
           localStorage.setItem("token", token);
           localStorage.setItem("user", JSON.stringify(user));
-          console.log(this.$store.state.user);
-          this.$router.push('/'); // TODO: Go to dashboard
+          this.$store.dispatch("loading", false);
+          this.$router.push({name: "Home"});
           this.$swal(this.toast_success);
         } else {
           this.$swal(this.toast_error);
         }
       }).catch(() => {
+        this.$store.dispatch("loading", false);
         this.$swal(this.toast_error);
       });
     }

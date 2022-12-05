@@ -35,6 +35,9 @@ export default createStore({
         logout: ({commit}) => {
             commit("reset", "");
         },
+        loading: ({commit}, payload) => {
+            commit("setLoading", payload);
+        }
     },
     getters: {
         isLoading(state) {

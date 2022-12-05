@@ -39,6 +39,7 @@
   "roleDescription": "Role description",
   "username": "Username",
   "dashboard": "Dashboard",
-  "admin": "Administator",
-  "hello": "Hello"
+  "admin": "Administrator",
+  "hello": "Hello",
+  "loading": "Loading"
 }
