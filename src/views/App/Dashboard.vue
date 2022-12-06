@@ -1,6 +1,6 @@
 <template>
-  <div class="dashboard">
-    <h1>{{ $t("hello") }} {{ username }}</h1>
+  <div class="dashboard middle full-height">
+    <h1 class="title">{{ $t("hello") }} {{ username }}</h1>
   </div>
 </template>
 
@@ -19,14 +19,4 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.dashboard {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  h1 {
-    font-size: 2rem;
-  }
-}
 </style>

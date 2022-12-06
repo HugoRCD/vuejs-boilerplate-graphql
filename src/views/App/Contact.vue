@@ -1,5 +1,5 @@
 <template>
-  <div class="contact">
+  <div class="contact middle full-height">
     {{ $t("contact") }}
   </div>
 </template>
@@ -11,11 +11,4 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.contact {
-  color: var(--font-color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
 </style>

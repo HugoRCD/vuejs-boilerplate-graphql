@@ -1,5 +1,5 @@
 <template>
-  <div class="verify">
+  <div class="verify middle">
     <div class="container">
       <div class="verify-header center">
       </div>
@@ -103,9 +103,4 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.verify {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 </style>

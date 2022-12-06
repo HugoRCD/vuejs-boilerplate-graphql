@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div class="about middle full-height">
     {{ $t("about") }}
   </div>
 </template>
@@ -11,11 +11,4 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.about {
-  color: var(--font-color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
 </style>

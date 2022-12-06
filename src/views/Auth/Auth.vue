@@ -1,12 +1,7 @@
 <template>
   <div class="auth">
     <div class="auth-header">
-      <router-link :to="{ name: 'Home' }">
-        <div class="logo-section">
-          <img src="../../assets/media/logo.png" alt="logo">
-          <h1>Vue Template</h1>
-        </div>
-      </router-link>
+      <Logo/>
       <div class="nav-button">
         <ThemeSwitcher/>
         <LanguageSelector/>
@@ -21,10 +16,11 @@
 <script>
 import ThemeSwitcher from "@/components/ThemeSwitcher.vue";
 import LanguageSelector from "@/components/LanguageSelector.vue";
+import Logo from "@/components/Logo.vue";
 
 export default {
   name: "Auth",
-  components: {ThemeSwitcher, LanguageSelector}
+  components: {Logo, ThemeSwitcher, LanguageSelector}
 }
 </script>
 

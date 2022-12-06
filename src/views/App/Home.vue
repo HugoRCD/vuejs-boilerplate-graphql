@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home middle full-height">
     {{ $t("home") }}
   </div>
 </template>
@@ -11,11 +11,4 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.home {
-  color: var(--font-color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
 </style>

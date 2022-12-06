@@ -63,6 +63,17 @@ body {
   }
 }
 
+// Div styles
+.middle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.full-height {
+  height: 100vh;
+}
+
 // Container styles
 .container {
   padding: 2rem;
@@ -78,7 +89,7 @@ body {
 }
 
 // Title styles
-h1 {
+.title {
   font-size: var(--font-xxl);
   font-weight: var(--font-bold);
   color: var(--font-color);
@@ -86,7 +97,7 @@ h1 {
 }
 
 // Text styles
-p {
+.text {
   font-size: var(--font-base);
   color: var(--font-color-secondary);
   margin-bottom: 0.5rem;

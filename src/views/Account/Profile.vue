@@ -1,5 +1,5 @@
 <template>
-  <div class="profile">
+  <div class="profile middle full-height">
     <div>
       {{ $t("profile") }} of {{ user.username }}
     </div>
@@ -25,5 +25,4 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
 </style>

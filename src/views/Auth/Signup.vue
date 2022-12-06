@@ -1,9 +1,9 @@
 <template>
-  <div class="signup">
+  <div class="signup middle">
     <div class="container">
       <div class="signup-header center">
-        <h1>{{ $t("signup") }}</h1>
-        <p>{{ $t("signupText") }}</p>
+        <h1 class="title">{{ $t("signup") }}</h1>
+        <p class="text">{{ $t("signupText") }}</p>
       </div>
       <div class="signup-form">
         <div class="form-item">
@@ -132,9 +132,4 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.signup {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 </style>

@@ -1,11 +1,6 @@
 <template>
   <div class="navbar">
-    <router-link :to="{ name: 'Home' }">
-      <div class="logo-section">
-        <img src="../assets/media/logo.png" alt="logo">
-        <h1>Vue Template</h1>
-      </div>
-    </router-link>
+    <Logo/>
     <div class="nav-container">
       <div class="nav-link">
         <router-link v-for="link in nav" :key="link.link" :to="{ name: link.name }">
@@ -63,10 +58,12 @@
 import ThemeSwitcher from "@/components/ThemeSwitcher";
 import LanguageSelector from '@/components/LanguageSelector.vue'
 import ProfilTool from "@/components/ProfilTool";
+import Logo from "@/components/Logo.vue";
 
 export default {
   name: "Navbar",
   components: {
+    Logo,
     ThemeSwitcher,
     LanguageSelector,
     ProfilTool
@@ -146,24 +143,6 @@ export default {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   position: relative;
   z-index: 100;
-
-  .logo-section {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-
-    img {
-      width: 2rem;
-      height: 2rem;
-      margin-right: 0.5rem;
-    }
-
-    h1 {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--font-color);
-    }
-  }
 
   .nav-container {
     display: flex;

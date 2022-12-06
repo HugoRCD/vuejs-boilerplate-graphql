@@ -1,9 +1,9 @@
 <template>
-  <div class="login">
+  <div class="login middle">
     <div class="container">
       <div class="login-header center">
-        <h1>{{ $t("login") }}</h1>
-        <p>{{ $t("loginText") }}</p>
+        <h1 class="title">{{ $t("login") }}</h1>
+        <p class="text">{{ $t("loginText") }}</p>
       </div>
       <div class="login-form" v-if="!loading">
         <div class="form-item">
@@ -106,9 +106,4 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.login {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 </style>
