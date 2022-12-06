@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "margin";
+
 // Global styles
 [data-theme="dark"] {
   --bg-primary: #111827;
@@ -29,6 +31,7 @@
   --font-base: 1rem;
   --font-lg: 1.125rem;
   --font-xl: 1.25rem;
+  --font-xxl: 2rem;
   --font-bold: 600;
 
   --btn-padding: 0.35rem 1rem;
@@ -60,6 +63,11 @@ body {
   }
 }
 
+// Container styles
+.container {
+  padding: 2rem;
+}
+
 // Card styles
 .card {
   background-color: var(--bg-primary);
@@ -69,9 +77,39 @@ body {
   margin: 1rem;
 }
 
+// Title styles
+h1 {
+  font-size: var(--font-xxl);
+  font-weight: var(--font-bold);
+  color: var(--font-color);
+  margin-bottom: 0.5rem;
+}
+
+// Text styles
+p {
+  font-size: var(--font-base);
+  color: var(--font-color-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.center {
+  text-align: center;
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+.fullwidth {
+  width: 100%;
+}
+
 // Label styles
 .label {
-  display: block;
   font-size: var(--font-sm);
   margin-bottom: 0.5rem;
   font-weight: var(--font-bold);
@@ -85,6 +123,18 @@ body {
   border-radius: var(--btn-radius);
   color: var(--font-color);
   background-color: var(--bg-secondary);
+  outline: none;
+}
+
+// Form styles
+.form-item {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.form-group {
+  display: flex;
+  gap: 1rem;
 }
 
 // Button styles

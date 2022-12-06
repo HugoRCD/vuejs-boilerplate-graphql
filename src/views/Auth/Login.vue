@@ -1,24 +1,24 @@
 <template>
   <div class="login">
-    <div class="login-container">
-      <div class="login-header">
+    <div class="container">
+      <div class="login-header center">
         <h1>{{ $t("login") }}</h1>
         <p>{{ $t("loginText") }}</p>
       </div>
       <div class="login-form" v-if="!loading">
-        <div class="form-group">
+        <div class="form-item">
           <label class="label" for="email">{{ $t("email") }}</label>
           <input class="input" type="email" id="email" placeholder="contact@gmail.com" v-model="user.email"/>
         </div>
-        <div class="form-group">
+        <div class="form-item">
           <label class="label" for="password">{{ $t("password") }}</label>
           <input class="input" type="password" id="password" placeholder="123soleil" v-model="user.password"/>
         </div>
-        <div class="form-group">
-          <button class="btn-primary" @click.prevent="login()">{{ $t("login") }}</button>
+        <div class="form-item my-lg">
+          <button class="btn-primary fullwidth" @click.prevent="login()">{{ $t("login") }}</button>
         </div>
       </div>
-      <div class="login-footer" v-else>
+      <div class="login-footer center" v-else>
         <i class="fa-solid fa-circle-notch fa-spin"></i>
         <p>{{ $t("loading") }}</p>
       </div>
@@ -107,45 +107,8 @@ export default {
 
 <style scoped lang="scss">
 .login {
-  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--font-color);
-
-  .login-container {
-
-    .login-header {
-      text-align: center;
-
-      h1 {
-        font-size: 2rem;
-        margin-bottom: 0.5rem;
-      }
-
-      p {
-        font-size: 0.9rem;
-        color: var(--text-muted);
-      }
-    }
-
-    .login-form {
-      margin-top: 2rem;
-
-      .form-group {
-        margin-bottom: 1rem;
-      }
-    }
-
-    .login-footer {
-      margin-top: 1rem;
-      text-align: center;
-
-      p {
-        font-size: 0.9rem;
-        color: var(--text-muted);
-      }
-    }
-  }
 }
 </style>

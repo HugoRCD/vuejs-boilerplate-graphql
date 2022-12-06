@@ -1,13 +1,13 @@
 <template>
   <div class="verify">
-    <div class="verify-container">
-      <div class="verify-header">
+    <div class="container">
+      <div class="verify-header center">
       </div>
-      <div class="form-group">
+      <div class="form-item">
         <label class="label" for="verify">{{ $t("verify") }}</label>
         <input class="input" type="text" id="verify" placeholder="******" v-model="code"/>
       </div>
-      <div class="form-group" @click="verify">
+      <div class="form-item" @click="verify">
         <button class="btn-primary">{{ $t("verify") }}</button>
       </div>
       <div class="verify-footer">
@@ -103,5 +103,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
+.verify {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 </style>
