@@ -29,14 +29,22 @@ export default createStore({
     },
     actions: {
         login: ({commit, dispatch}, {token, user}) => {
+            localStorage.setItem("token", token);
+            localStorage.setItem("user", JSON.stringify(user));
             commit("setToken", token);
             commit("setUser", user);
         },
         logout: ({commit}) => {
+            localStorage.removeItem("token");
+            localStorage.removeItem("user");
             commit("reset", "");
         },
         loading: ({commit}, payload) => {
             commit("setLoading", payload);
+        },
+        insertUser: ({commit}, user) => {
+            localStorage.setItem("user", JSON.stringify(user));
+            commit("setUser", user);
         }
     },
     getters: {

@@ -79,6 +79,7 @@ export default {
             lastname
             email
             role
+            isVerified
           }
         }
       }`
@@ -87,8 +88,6 @@ export default {
         const user = response.data.authLogin.user;
         if (token) {
           this.$store.dispatch("login", {token, user});
-          localStorage.setItem("token", token);
-          localStorage.setItem("user", JSON.stringify(user));
           this.$store.dispatch("loading", false);
           this.$router.push({name: "Home"});
           this.$swal(this.toast_success);

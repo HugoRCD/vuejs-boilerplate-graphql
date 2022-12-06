@@ -8,8 +8,8 @@
         </div>
       </router-link>
       <div class="nav-button">
-        <ThemeSwitcher />
-        <LanguageSelector />
+        <ThemeSwitcher/>
+        <LanguageSelector/>
       </div>
     </div>
     <div class="auth-container">
@@ -33,30 +33,36 @@ export default {
   display: flex;
   flex-direction: column;
   height: 100vh;
+
   .auth-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
+
     .logo-section {
       display: flex;
       align-items: center;
+
       img {
         width: 2rem;
         margin-right: 1rem;
       }
+
       h1 {
         font-size: 1.5rem;
         font-weight: 600;
         color: var(--font-color);
       }
     }
+
     .nav-button {
       display: flex;
       align-items: center;
       gap: 1rem;
     }
   }
+
   .auth-container {
     display: flex;
     justify-content: center;

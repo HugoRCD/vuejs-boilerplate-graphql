@@ -15,6 +15,7 @@ import Profile from "@/views/Account/Profile.vue";
 import Settings from "@/views/Account/Settings.vue";
 
 import store from "@/store";
+import VerifyUser from "@/views/Auth/VerifyUser.vue";
 
 const routes = [
     {
@@ -64,6 +65,11 @@ const routes = [
                 path: 'login',
                 name: 'Login',
                 component: Login
+            },
+            {
+                path: 'verifyUser',
+                name: 'VerifyUser',
+                component: VerifyUser
             }
         ]
     },
@@ -110,7 +116,7 @@ function isTokenExpired(token) {
             .join("")
     );
 
-    const { exp } = JSON.parse(jsonPayload);
+    const {exp} = JSON.parse(jsonPayload);
     return Date.now() >= exp * 1000
 }
 
@@ -119,13 +125,13 @@ router.beforeEach((to, from, next) => {
         if (store.getters.isLoggedIn) {
             if (isTokenExpired(store.state.token)) {
                 store.dispatch("logout");
-                localStorage.removeItem("token");
-                localStorage.removeItem("user");
                 next({
                     path: 'auth/login',
                 });
             } else {
-                next();
+                store.getters.user.isVerified ? next() : next({
+                    path: 'auth/verifyUser',
+                });
             }
         } else {
             next({

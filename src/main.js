@@ -21,7 +21,7 @@ const httpLink = createHttpLink({
 const authMiddleware = new ApolloLink((operation, forward) => {
     operation.setContext({
         headers: {
-            authorization: store.state.user.token ? `Bearer ${store.state.user.token}` : null
+            authorization: store.state.token ? `Bearer ${store.state.token}` : null
         }
     });
     return forward(operation);

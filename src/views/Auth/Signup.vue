@@ -65,6 +65,7 @@ export default {
       createUserInput: {
         email: "",
         password: "",
+        username: "",
         firstname: "",
         lastname: "",
         telephone: "",
@@ -103,6 +104,7 @@ export default {
               firstname
               lastname
               role
+              isVerified
             }
         }
         }`,
@@ -114,10 +116,8 @@ export default {
         const user = response.data.authSignup.user;
         if (token) {
           this.$store.dispatch("login", {token, user});
-          localStorage.setItem("token", token);
-          localStorage.setItem("user", JSON.stringify(user));
           this.$store.dispatch("loading", false);
-          this.$router.push({name: "Home"});
+          this.$router.push({name: "VerifyUser"});
           this.$swal(this.toast_success);
         } else {
           this.$swal(this.toast_error);
