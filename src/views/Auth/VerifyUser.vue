@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import gql from "graphql-tag";
+import verifyUser from "@/graphql/mutations/verifyUser.gql";
 
 export default {
   name: "VerifyUser",
@@ -33,19 +33,7 @@ export default {
     verify() {
       this.$store.dispatch("loading", true);
       this.$apollo.mutate({
-        mutation: gql`
-          mutation verifyUser($code: String!) {
-            verifyUser(code: $code) {
-              id
-              email
-              username
-              firstname
-              lastname
-              isVerified
-              role
-            }
-          }
-        `,
+        mutation: verifyUser,
         variables: {
           code: this.code,
         },

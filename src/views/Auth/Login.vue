@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import gql from "graphql-tag";
+import login from "@/graphql/mutations/login.gql";
 
 export default {
   name: "Login",
@@ -71,20 +71,11 @@ export default {
     async login() {
       this.$store.dispatch("loading", true);
       this.$apollo.mutate({
-        mutation: gql`mutation login {
-        authLogin(username: "${this.user.email}", password: "${this.user.password}") {
-          token
-          user {
-            id
-            username
-            firstname
-            lastname
-            email
-            role
-            isVerified
-          }
+        mutation: login,
+        variables: {
+          username: this.user.email,
+          password: this.user.password
         }
-      }`
       }).then((response) => {
         const token = response.data.authLogin.token;
         const user = response.data.authLogin.user;

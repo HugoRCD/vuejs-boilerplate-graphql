@@ -55,8 +55,7 @@
 </template>
 
 <script>
-
-import gql from "graphql-tag";
+import signup from "@/graphql/mutations/signup.gql";
 
 export default {
   name: "Signup",
@@ -95,19 +94,7 @@ export default {
     async signup() {
       this.$store.dispatch("loading", true);
       this.$apollo.mutate({
-        mutation: gql`mutation createUser($createUserInput: CreateUserInput!) {
-          authSignup(user: $createUserInput) {
-            token
-            user {
-              email
-              username
-              firstname
-              lastname
-              role
-              isVerified
-            }
-        }
-        }`,
+        mutation: signup,
         variables: {
           createUserInput: this.createUserInput
         }
