@@ -21,6 +21,7 @@
 
 <script>
 import verifyUser from "@/graphql/mutations/verifyUser.gql";
+import getVerificationCode from "@/graphql/mutations/getVerificationCode.gql";
 
 export default {
   name: "VerifyUser",
@@ -66,15 +67,9 @@ export default {
       this.$store.dispatch("loading", true);
       const user = this.$store.getters.user;
       this.$apollo.mutate({
-        mutation: gql`
-          mutation getVerificationCode($email: String!) {
-            getVerificationCode(email: $email) {
-                code
-            }
-          }
-        `,
+        mutation: getVerificationCode,
         variables: {
-          email: user.email
+          email: user.email,
         },
       })
         .then(() => {
