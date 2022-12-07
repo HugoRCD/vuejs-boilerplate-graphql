@@ -1,4 +1,4 @@
-# vuejs-frontend-template
+# VueJs-frontend-template
 
 ## Project setup
 ```

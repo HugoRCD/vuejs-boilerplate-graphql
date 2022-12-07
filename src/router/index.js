@@ -124,7 +124,7 @@ router.beforeEach((to, from, next) => {
     if (to.matched.some((record) => record.meta.requiresAuth)) {
         if (store.getters.isLoggedIn) {
             if (isTokenExpired(store.state.token)) {
-                store.dispatch("logout");
+                store.dispatch("logout").then(r => console.log(r));
                 next({
                     path: 'auth/login',
                 });

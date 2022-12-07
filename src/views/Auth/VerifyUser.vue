@@ -77,11 +77,11 @@ export default {
           email: user.email
         },
       })
-        .then((res) => {
+        .then(() => {
           this.$store.dispatch("loading", false);
           this.$swal(this.$t("verifyCodeSuccess"), "", "success");
         })
-        .catch((err) => {
+        .catch(() => {
           this.$store.dispatch("loading", false);
           this.$swal(this.$t("verifyCodeError"), "", "error");
         });
