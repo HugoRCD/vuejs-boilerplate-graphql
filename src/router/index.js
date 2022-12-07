@@ -134,6 +134,13 @@ router.beforeEach((to, from, next) => {
         });
       }
     } else {
+      if (localStorage.getItem("token") && localStorage.getItem("user")) {
+        store.dispatch("login", {
+          token: localStorage.getItem("token"),
+          user: JSON.parse(localStorage.getItem("user"))
+        }).then(r => console.log(r));
+        next();
+      }
       next({
         path: "auth/login",
         query: {redirect: to.fullPath},

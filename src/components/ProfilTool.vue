@@ -77,8 +77,6 @@ export default {
       }).then(result => {
         if (result.isConfirmed) {
           this.$store.dispatch("logout");
-          localStorage.removeItem("token");
-          localStorage.removeItem("user");
           this.$router.push({name: "Login"});
           this.$swal(this.$t("logout"), this.$t("logoutSuccess"), "success");
           this.menuOpen = false;

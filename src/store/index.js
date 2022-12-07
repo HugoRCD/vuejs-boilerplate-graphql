@@ -52,7 +52,7 @@ export default createStore({
       return state.isLoading;
     },
     isLoggedIn(state) {
-      return state.token !== "";
+      return !!state.token;
     },
     user(state) {
       return state.user;
