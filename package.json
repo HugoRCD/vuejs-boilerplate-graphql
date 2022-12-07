@@ -22,7 +22,7 @@
     "vuex": "^4.0.0"
   },
   "devDependencies": {
-    "@intlify/vue-i18n-loader": "^3.0.0",
+    "@intlify/vue-i18n-loader": "^4.2.0",
     "@vue/cli-plugin-router": "~5.0.0",
     "@vue/cli-plugin-vuex": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
