@@ -56,7 +56,7 @@
 
 <script>
 import ThemeSwitcher from "@/components/ThemeSwitcher";
-import LanguageSelector from '@/components/LanguageSelector.vue'
+import LanguageSelector from "@/components/LanguageSelector.vue";
 import ProfilTool from "@/components/ProfilTool";
 import Logo from "@/components/Logo.vue";
 
@@ -104,7 +104,7 @@ export default {
           path: "/dashboard"
         }
       ]
-    }
+    };
   },
   created() {
     this.nav = this.navLinks;
@@ -123,13 +123,13 @@ export default {
   },
   methods: {
     toggleMenu() {
-      this.showMenu = !this.showMenu
+      this.showMenu = !this.showMenu;
     },
     hide() {
-      this.showMenu = false
+      this.showMenu = false;
     }
   },
-}
+};
 </script>
 
 <style scoped lang="scss">

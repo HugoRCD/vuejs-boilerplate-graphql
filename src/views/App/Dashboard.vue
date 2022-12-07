@@ -10,12 +10,12 @@ export default {
   data() {
     return {
       username: null,
-    }
+    };
   },
   created() {
     this.username = this.$store.getters.user.username;
   }
-}
+};
 </script>
 
 <style scoped lang="scss">

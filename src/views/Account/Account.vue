@@ -20,10 +20,12 @@ export default {
         return "admin";
       } else if (this.user.role === 0) {
         return "user";
+      } else {
+        return "user";
       }
     }
   }
-}
+};
 </script>
 
 <style scoped lang="scss">

@@ -19,7 +19,7 @@
     "rules": {
         "indent": [
             "error",
-            4
+            2
         ],
         "linebreak-style": [
             "error",
@@ -32,6 +32,10 @@
         "semi": [
             "error",
             "always"
-        ]
+        ],
+        "vue/no-side-effects-in-computed-properties": "off",
+        "vue/multi-word-component-names": "off",
+        "vue/component-name-in-template-casing": ["error", "PascalCase"],
+        "no-undef": "off"
     }
 }

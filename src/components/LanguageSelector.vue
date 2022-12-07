@@ -20,7 +20,7 @@ export default {
         timerProgressBar: true,
         showConfirmButton: false
       }
-    }
+    };
   },
   methods: {
     changeLocale() {

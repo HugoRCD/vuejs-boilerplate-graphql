@@ -11,7 +11,7 @@ export default {
   data() {
     return {
       theme: "dark"
-    }
+    };
   },
   created() {
     this.theme = localStorage.getItem("theme") || "dark";
@@ -27,7 +27,7 @@ export default {
       }
     }
   },
-}
+};
 </script>
 
 <style scoped lang="scss">

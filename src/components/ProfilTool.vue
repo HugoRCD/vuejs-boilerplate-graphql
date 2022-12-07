@@ -41,7 +41,7 @@ export default {
           path: "/settings"
         }
       ]
-    }
+    };
   },
   computed: {
     user() {
@@ -51,6 +51,8 @@ export default {
       if (this.user.role === 1) {
         return "admin";
       } else if (this.user.role === 0) {
+        return "user";
+      } else {
         return "user";
       }
     }
@@ -84,7 +86,7 @@ export default {
       });
     }
   }
-}
+};
 </script>
 
 <style scoped lang="scss">

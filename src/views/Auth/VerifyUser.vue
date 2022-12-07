@@ -43,7 +43,7 @@ export default {
           if (res.data.verifyUser) {
             this.$store.dispatch("loading", false);
             this.$store.dispatch("insertUser", res.data.verifyUser);
-            this.$router.push({ name: "Home" });
+            this.$router.push({name: "Home"});
           } else {
             this.$store.dispatch("loading", false);
             this.$swal(this.$t("verifyError"));
@@ -82,7 +82,7 @@ export default {
         });
     },
   },
-}
+};
 </script>
 
 <style scoped lang="scss">
