@@ -53,6 +53,9 @@
   "verifyEmail": "Verify your email address",
   "verifyEmailText": "A fresh verification link has been sent to your email address.",
   "verifyEmailSuccess": "You email address has been verified !",
+  "verifyEmailError": "An error occurred while trying to verify your email address",
   "verifyEmailNotReceived": "If you did not receive the email click here to request another",
-  "resendCode": "Resend verification code"
+  "resendCode": "Resend verification code",
+  "CodeSent": "A new verification code has been sent to your email address.",
+  "CodeSentError": "An error occurred while trying to send a new verification code"
 }
