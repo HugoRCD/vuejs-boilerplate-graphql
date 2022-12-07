@@ -48,5 +48,11 @@
   "dashboard": "Tableau de bord",
   "admin": "Administrateur",
   "hello": "Bonjour",
-  "loading": "Chargement"
+  "loading": "Chargement",
+  "verify": "Vérifier votre code",
+  "verifyEmail": "Vérifier votre adresse email",
+  "verifyEmailText": "Un email de vérification vous a été envoyé. Veuillez vérifier votre boîte de réception.",
+  "verifyEmailSuccess": "Votre adresse email a été vérifiée avec succès !",
+  "verifyEmailNotReceived": "Vous n'avez pas reçu l'email ?",
+  "resendCode": "Renvoyer le code"
 }

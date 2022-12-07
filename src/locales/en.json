@@ -48,5 +48,11 @@
   "dashboard": "Dashboard",
   "admin": "Administrator",
   "hello": "Hello",
-  "loading": "Loading"
+  "loading": "Loading",
+  "verify": "Verify your code",
+  "verifyEmail": "Verify your email address",
+  "verifyEmailText": "A fresh verification link has been sent to your email address.",
+  "verifyEmailSuccess": "You email address has been verified !",
+  "verifyEmailNotReceived": "If you did not receive the email click here to request another",
+  "resendCode": "Resend verification code"
 }

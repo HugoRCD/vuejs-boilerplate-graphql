@@ -1,19 +1,20 @@
 <template>
   <div class="verify middle">
     <div class="container">
-      <div class="verify-header center">
+      <div class="verify-header center my-lg">
+        <h1 class="title">{{ $t("verifyEmail") }}</h1>
+        <p class="text">{{ $t("verifyEmailText") }}</p>
       </div>
       <div class="form-item">
         <label class="label" for="verify">{{ $t("verify") }}</label>
-        <input class="input" type="text" id="verify" placeholder="******" v-model="code"/>
+        <input class="input mt-sm" type="text" id="verify" placeholder="1262143172" v-model="code"/>
       </div>
-      <div class="form-item" @click="verify">
-        <button class="btn-primary">{{ $t("verify") }}</button>
+      <div class="form-item center" @click="verify">
+        <button class="btn-primary fullwidth">{{ $t("verify") }}</button>
       </div>
-      <div class="verify-footer">
-        <span class="verify-footer-text">{{ $t("noCode") }}</span>
-        <br>
-        <button class="btn-link" @click="getVerificationCode">{{ $t("resendCode") }}</button>
+      <div class="verify-footer center">
+        <p class="text">{{ $t("verifyEmailNotReceived") }}</p>
+        <button class="btn-secondary mt-md" @click="getVerificationCode">{{ $t("resendCode") }}</button>
       </div>
     </div>
   </div>
