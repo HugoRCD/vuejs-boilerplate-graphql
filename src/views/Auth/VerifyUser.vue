@@ -57,23 +57,13 @@ export default {
             this.$router.push({name: "Home"});
             this.$swal({
               title: this.$t("verifyEmailSuccess"),
-              toast: true,
-              position: "top-end",
               icon: "success",
-              timer: 1500,
-              timerProgressBar: true,
-              showConfirmButton: false
             });
           } else {
             this.$store.dispatch("loading", false);
             this.$swal({
               title: this.$t("verifyEmailError"),
-              toast: true,
-              position: "top-end",
               icon: "error",
-              timer: 1500,
-              timerProgressBar: true,
-              showConfirmButton: false
             });
           }
         })
@@ -93,23 +83,13 @@ export default {
         .then(() => {
           this.$swal({
             title: this.$t("CodeSent"),
-            toast: true,
-            position: "top-end",
             icon: "success",
-            timer: 1500,
-            timerProgressBar: true,
-            showConfirmButton: false
           });
         })
         .catch(() => {
           this.$swal({
             title: this.$t("CodeSentError"),
-            toast: true,
-            position: "top-end",
             icon: "error",
-            timer: 1500,
-            timerProgressBar: true,
-            showConfirmButton: false
           });
         });
     },

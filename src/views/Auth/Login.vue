@@ -17,15 +17,15 @@
         <div class="form-item my-lg">
           <button class="btn-primary fullwidth" @click.prevent="login()">{{ $t("login") }}</button>
         </div>
+        <div class="login-footer">
+          <p>{{ $t("noAccount") }}
+            <router-link :to="{name: 'Signup'}">{{ $t("signup") }}</router-link>
+          </p>
+        </div>
       </div>
       <div class="login-footer center" v-else>
         <i class="fa-solid fa-circle-notch fa-spin"></i>
         <p>{{ $t("loading") }}</p>
-      </div>
-      <div class="login-footer">
-        <p>{{ $t("noAccount") }}
-          <router-link :to="{name: 'Signup'}">{{ $t("signup") }}</router-link>
-        </p>
       </div>
     </div>
   </div>
@@ -44,21 +44,11 @@ export default {
       },
       toast_success: {
         title: this.$t("loginSuccess"),
-        toast: true,
         icon: "success",
-        timer: 1500,
-        position: "top-end",
-        timerProgressBar: true,
-        showConfirmButton: false
       },
       toast_error: {
         title: this.$t("loginError"),
-        toast: true,
         icon: "error",
-        timer: 1500,
-        position: "top-end",
-        timerProgressBar: true,
-        showConfirmButton: false
       }
     };
   },

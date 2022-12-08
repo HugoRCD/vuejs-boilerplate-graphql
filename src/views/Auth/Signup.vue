@@ -46,7 +46,7 @@
         </div>
       </div>
       <div class="signup-footer center">
-        <p>{{ $t("alreadyHaveAccount") }}
+        <p class="text">{{ $t("alreadyHaveAccount") }}
           <router-link :to="{name: 'Login'}">{{ $t("login") }}</router-link>
         </p>
       </div>
@@ -72,21 +72,11 @@ export default {
       },
       toast_success: {
         title: this.$t("accountCreatedSuccess"),
-        toast: true,
         icon: "success",
-        timer: 1500,
-        position: "top-end",
-        timerProgressBar: true,
-        showConfirmButton: false
       },
       toast_error: {
         title: this.$t("accountCreatedError"),
-        toast: true,
         icon: "error",
-        timer: 1500,
-        position: "top-end",
-        timerProgressBar: true,
-        showConfirmButton: false
       }
     };
   },

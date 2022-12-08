@@ -35,12 +35,20 @@ const apolloProvider = createApolloProvider({
   })
 });
 
+const options = {
+  toast: true,
+  position: "top-end",
+  timer: 1500,
+  showConfirmButton: false,
+  timerProgressBar: true,
+};
+
 createApp(App)
   .use(i18n)
   .use(store)
   .use(router)
   .use(i18n)
   .use(apolloProvider)
-  .use(VueSweetalert2)
+  .use(VueSweetalert2, options)
   .directive("click-outside", clickOutside["click-outside"])
   .mount("#app");
