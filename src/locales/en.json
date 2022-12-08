@@ -64,5 +64,13 @@
   "supportSuccess": "Your message has been sent !",
   "supportError": "An error occurred while trying to send your message",
   "subject": "Subject",
-  "message": "Message"
+  "message": "Message",
+  "type": "Type",
+  "bug": "Bug",
+  "information": "Information",
+  "informations": "Informations",
+  "report": "Report",
+  "reportBug": "Report a bug",
+  "askFeature": "Request a feature",
+  "askInformations": "Request informations"
 }

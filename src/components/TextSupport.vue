@@ -8,8 +8,8 @@
 export default {
   name: "TextSupport",
   methods: {
-    textSupport() {
-      this.$swal({
+    async textSupport() {
+      const {value: formValues} = await this.$swal({
         title: this.$t("support"),
         html: `
           <div class="form">
@@ -17,8 +17,12 @@ export default {
               <p class="text">${this.$t("supportText")}</p>
             </div>
             <div class="form-item left">
-              <label class="label" for="subject">${this.$t("subject")}</label>
-              <input class="input mt-sm" id="subject" class="swal2-input" placeholder="Bug, informations...">
+              <label class="label" for="type">${this.$t("type")}</label>
+              <select class="input mt-sm" id="type">
+                <option value="bug">${this.$t("reportBug")}</option>
+                <option value="feature">${this.$t("askFeature")}</option>
+                <option value="info">${this.$t("askInformations")}</option>
+              </select>
             </div>
             <div class="form-item left">
               <label class="label" for="message">${this.$t("message")}</label>
@@ -38,17 +42,16 @@ export default {
         color: "var(--font-color)",
         preConfirm: () => {
           return {
-            subject: document.getElementById("subject").value,
-            message: document.getElementById("message").value
+            type: document.getElementById("type").value,
+            message: document.getElementById("message").value,
           };
         }
-      }).then(result => {
-        if (result.isConfirmed) {
-          this.$swal({
-            text: this.$t("supportSuccess"),
-          });
-        }
       });
+      if (formValues) {
+        this.type = formValues.type;
+        this.message = formValues.message;
+        //TODO: Send to server
+      }
     }
   }
 };
