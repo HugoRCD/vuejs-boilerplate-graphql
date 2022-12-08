@@ -60,7 +60,7 @@
   "codeSentError": "Une erreur est survenue lors de l'envoi du code",
   "support": "Support",
   "send": "Envoyer",
-  "supportText": "Vous avez besoin d'aide ? Envoyez-nous un message.",
+  "supportText": "Vous avez besoin d'aide ? Envoyez-nous un message et nous vous répondrons dans les plus brefs délais.",
   "supportSuccess": "Votre message a été envoyé avec succès !",
   "supportError": "Une erreur est survenue lors de l'envoi de votre message",
   "subject": "Sujet",
