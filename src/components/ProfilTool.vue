@@ -87,6 +87,7 @@ export default {
           this.$router.push({name: "Login"});
           this.$swal({
             text: this.$t("logoutSuccess"),
+            icon: "success",
           });
           this.menuOpen = false;
         }
