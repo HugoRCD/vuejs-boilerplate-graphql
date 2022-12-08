@@ -18,24 +18,23 @@
           <button class="btn-primary fullwidth" @click.prevent="login()">{{ $t("login") }}</button>
         </div>
         <div class="login-footer">
-          <p>{{ $t("noAccount") }}
+          <p class="text">{{ $t("noAccount") }}
             <router-link :to="{name: 'Signup'}">{{ $t("signup") }}</router-link>
           </p>
         </div>
       </div>
-      <div class="login-footer center" v-else>
-        <i class="fa-solid fa-circle-notch fa-spin"></i>
-        <p>{{ $t("loading") }}</p>
-      </div>
+      <Loader :isText="false" v-else/>
     </div>
   </div>
 </template>
 
 <script>
 import login from "@/graphql/mutations/login.gql";
+import Loader from "@/components/Loader.vue";
 
 export default {
   name: "Login",
+  components: {Loader},
   data() {
     return {
       user: {

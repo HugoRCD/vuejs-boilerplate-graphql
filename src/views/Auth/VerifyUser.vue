@@ -18,9 +18,7 @@
           <button class="btn-secondary mt-md" @click="getVerificationCode">{{ $t("resendCode") }}</button>
         </div>
       </div>
-      <div class="center" v-else>
-        <i class="fa-solid fa-circle-notch fa-spin"></i>
-      </div>
+      <Loader :isText="false" v-else/>
     </div>
   </div>
 </template>
@@ -28,9 +26,11 @@
 <script>
 import verifyUser from "@/graphql/mutations/verifyUser.gql";
 import getVerificationCode from "@/graphql/mutations/getVerificationCode.gql";
+import Loader from "@/components/Loader.vue";
 
 export default {
   name: "VerifyUser",
+  components: {Loader},
   data() {
     return {
       code: "",

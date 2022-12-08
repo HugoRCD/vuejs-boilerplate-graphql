@@ -5,7 +5,7 @@
         <h1 class="title">{{ $t("signup") }}</h1>
         <p class="text">{{ $t("signupText") }}</p>
       </div>
-      <div class="signup-form">
+      <div class="signup-form" v-if="!loading">
         <div class="form-item">
           <label class="label" for="username">{{ $t("username") }}</label>
           <input class="input" type="text" id="username" placeholder="toto123" v-model="createUserInput.username"/>
@@ -44,21 +44,24 @@
         <div class="form-item my-lg" @click="signup">
           <button class="btn-primary fullwidth">{{ $t("signup") }}</button>
         </div>
+        <div class="signup-footer center">
+          <p class="text">{{ $t("alreadyHaveAccount") }}
+            <router-link :to="{name: 'Login'}">{{ $t("login") }}</router-link>
+          </p>
+        </div>
       </div>
-      <div class="signup-footer center">
-        <p class="text">{{ $t("alreadyHaveAccount") }}
-          <router-link :to="{name: 'Login'}">{{ $t("login") }}</router-link>
-        </p>
-      </div>
+      <Loader :isText="false" v-else/>
     </div>
   </div>
 </template>
 
 <script>
 import signup from "@/graphql/mutations/signup.gql";
+import Loader from "@/components/Loader.vue";
 
 export default {
   name: "Signup",
+  components: {Loader},
   data() {
     return {
       createUserInput: {
@@ -79,6 +82,11 @@ export default {
         icon: "error",
       }
     };
+  },
+  computed: {
+    loading() {
+      return this.$store.getters.isLoading;
+    },
   },
   methods: {
     async signup() {

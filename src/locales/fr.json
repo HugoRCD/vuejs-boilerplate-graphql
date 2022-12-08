@@ -57,5 +57,12 @@
   "verifyEmailNotReceived": "Vous n'avez pas reçu l'email ?",
   "resendCode": "Renvoyer le code",
   "codeSent": "Un nouveau code a été envoyé à votre adresse email",
-  "codeSentError": "Une erreur est survenue lors de l'envoi du code"
+  "codeSentError": "Une erreur est survenue lors de l'envoi du code",
+  "support": "Support",
+  "send": "Envoyer",
+  "supportText": "Vous avez besoin d'aide ? Envoyez-nous un message.",
+  "supportSuccess": "Votre message a été envoyé avec succès !",
+  "supportError": "Une erreur est survenue lors de l'envoi de votre message",
+  "subject": "Sujet",
+  "message": "Message"
 }
