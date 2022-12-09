@@ -41,6 +41,7 @@ const options = {
   timer: 1500,
   showConfirmButton: false,
   timerProgressBar: true,
+  confirmButtonColor: "var(--accent)",
 };
 
 createApp(App)

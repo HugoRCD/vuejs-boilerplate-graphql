@@ -1,5 +1,5 @@
-mutation createUser($createUserInput: CreateUserInput!) {
-    authSignup(user: $createUserInput) {
+mutation createUser($user: CreateUserInput!) {
+    authSignup(user: $user) {
         token
         user {
             email

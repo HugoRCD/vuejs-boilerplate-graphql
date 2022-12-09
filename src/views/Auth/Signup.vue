@@ -24,7 +24,7 @@
           <div class="form-item">
             <label class="label" for="password">{{ $t("phone") }}</label>
             <input class="input" type="tel" id="phone" placeholder="(+33) 1 23 45 67 89"
-                   v-model="createUserInput.telephone"/>
+                   v-model="createUserInput.phone"/>
           </div>
           <div class="form-item">
             <label class="label" for="password">{{ $t("birthdate") }}</label>
@@ -70,7 +70,7 @@ export default {
         username: "",
         firstname: "",
         lastname: "",
-        telephone: "",
+        phone: "",
         birthdate: "",
       },
       toast_success: {
@@ -94,7 +94,7 @@ export default {
       this.$apollo.mutate({
         mutation: signup,
         variables: {
-          createUserInput: this.createUserInput
+          user: this.createUserInput
         }
       }).then((response) => {
         const token = response.data.authSignup.token;
