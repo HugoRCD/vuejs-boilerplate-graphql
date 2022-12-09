@@ -72,5 +72,6 @@
   "report": "Report",
   "reportBug": "Report a bug",
   "askFeature": "Request a feature",
-  "askInformations": "Request informations"
+  "askInformations": "Request informations",
+  "messageRequired": "The message field is required !"
 }

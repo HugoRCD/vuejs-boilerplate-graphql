@@ -72,5 +72,6 @@
   "report": "Signaler",
   "reportBug": "Signaler un bug",
   "askFeature": "Demande de fonctionnalité",
-  "askInformations": "Demande d'informations"
+  "askInformations": "Demande d'informations",
+  "messageRequired": "Le champ message est requis !"
 }
