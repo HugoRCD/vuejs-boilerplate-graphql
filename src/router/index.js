@@ -19,7 +19,7 @@ import VerifyUser from "@/views/Auth/VerifyUser.vue";
 
 import refreshToken from "@/graphql/mutations/refreshToken.gql";
 
-import {apolloProvider} from "@/plugins/apollo";
+import {apolloRefreshProvider} from "@/plugins/apollo";
 
 const routes = [
   {
@@ -126,15 +126,15 @@ function isTokenExpired(token) {
 
 function refreshTokenIfExpired(token, next) {
   console.log("refreshing token");
-  apolloProvider.defaultClient.mutate({
+  apolloRefreshProvider.defaultClient.mutate({
     mutation: refreshToken,
     variables: {
       refreshToken: token
     }
   }).then((response) => {
     console.log(response);
-    if (response.data.refreshToken) {
-      store.dispatch("login", response.data.refreshToken).then(() => console.log("refreshed token"));
+    if (response.data.RefreshToken) {
+      store.dispatch("login", response.data.RefreshToken).then(() => console.log("refreshed token"));
     } else {
       store.dispatch("logout").then(() => console.log("logged out"));
       next({

@@ -5,6 +5,8 @@ mutation refreshToken ($refreshToken: String!) {
         user {
             id
             username
+            email
+            isVerified
         }
     }
 }
