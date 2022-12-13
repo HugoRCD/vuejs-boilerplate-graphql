@@ -133,8 +133,8 @@ function refreshTokenIfExpired(token, next) {
     }
   }).then((response) => {
     console.log(response);
-    if (response.data.RefreshToken) {
-      store.dispatch("login", response.data.RefreshToken).then(() => console.log("refreshed token"));
+    if (response.data.refreshToken) {
+      store.dispatch("login", response.data.refreshToken).then(() => console.log("refreshed token"));
     } else {
       store.dispatch("logout").then(() => console.log("logged out"));
       next({
