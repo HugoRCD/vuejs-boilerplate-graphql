@@ -36,10 +36,9 @@ export default createStore({
     login: ({commit}, payload) => {
       localStorage.setItem("accessToken", payload.accessToken);
       localStorage.setItem("refreshToken", payload.refreshToken);
+      localStorage.setItem("user", JSON.stringify(payload.user));
       commit("setAccessToken", payload.accessToken);
       commit("setRefreshToken", payload.refreshToken);
-
-      localStorage.setItem("user", JSON.stringify(payload.user));
       commit("setUser", payload.user);
     },
     logout: ({commit}) => {

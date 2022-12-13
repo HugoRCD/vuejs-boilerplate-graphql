@@ -14,7 +14,6 @@ export default {
     Navbar
   },
   created() {
-    console.log("App created: LocalStorage: ", localStorage);
     if (localStorage.getItem("accessToken") && localStorage.getItem("refreshToken") && localStorage.getItem("user")) {
       this.$store.dispatch("login", {
         accessToken: localStorage.getItem("accessToken"),

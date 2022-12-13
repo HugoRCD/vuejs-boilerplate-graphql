@@ -1,12 +1,13 @@
 mutation createUser($user: CreateUserInput!) {
     authSignup(user: $user) {
-        token
+        accessToken
+        refreshToken
         user {
+            id
             email
             username
             firstname
             lastname
-            role
             isVerified
         }
     }
