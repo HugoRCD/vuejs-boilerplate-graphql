@@ -3,6 +3,8 @@
     {{ $t("support") }}
   </div>
 
+  <div v-if="showSupportDropdown" class="backdrop"></div>
+
   <div class="support-dropdown" v-if="showSupportDropdown" v-click-outside="hide">
     <div class="form" v-if="!isLoading">
       <div class="form-item left">
@@ -103,7 +105,9 @@ export default {
     background-color: var(--bg-primary);
   }
 }
+
 // place the dropdown in the center of the screen
+
 .support-dropdown {
   position: fixed;
   top: 50%;
