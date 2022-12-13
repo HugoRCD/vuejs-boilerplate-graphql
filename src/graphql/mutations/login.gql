@@ -1,13 +1,13 @@
 mutation login($username: String!, $password: String!) {
     authLogin(username: $username, password: $password) {
-        token
+        accessToken
+        refreshToken
         user {
             id
             username
             firstname
             lastname
             email
-            role
             isVerified
         }
     }

@@ -10,30 +10,7 @@ import "sweetalert2/dist/sweetalert2.min.css";
 
 import clickOutside from "./plugins/directives.js";
 
-import {ApolloClient, ApolloLink, createHttpLink, InMemoryCache} from "@apollo/client/core";
-import {createApolloProvider} from "@vue/apollo-option";
-import {concat} from "@apollo/client/link/core";
-
-const httpLink = createHttpLink({
-  uri: process.env.VUE_APP_API_URL || "http://localhost:3000/graphql",
-});
-
-const authMiddleware = new ApolloLink((operation, forward) => {
-  operation.setContext({
-    headers: {
-      authorization: store.state.token ? `Bearer ${store.state.token}` : null
-    }
-  });
-  return forward(operation);
-});
-
-const apolloProvider = createApolloProvider({
-  defaultClient: new ApolloClient({
-    link: concat(authMiddleware, httpLink),
-    cache: new InMemoryCache(),
-    connectToDevTools: true,
-  })
-});
+import {apolloProvider} from "@/plugins/apollo";
 
 const options = {
   toast: true,

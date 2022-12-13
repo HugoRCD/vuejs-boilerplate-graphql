@@ -97,10 +97,9 @@ export default {
           user: this.createUserInput
         }
       }).then((response) => {
-        const token = response.data.authSignup.token;
-        const user = response.data.authSignup.user;
-        if (token) {
-          this.$store.dispatch("login", {token, user});
+        const authLoginResponse = response.data.authLogin;
+        if (authLoginResponse) {
+          this.$store.dispatch("login", authLoginResponse);
           this.$store.dispatch("loading", false);
           this.$router.push({name: "VerifyUser"});
           this.$swal(this.toast_success);

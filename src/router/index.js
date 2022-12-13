@@ -17,6 +17,10 @@ import Settings from "@/views/Account/Settings.vue";
 import store from "@/store";
 import VerifyUser from "@/views/Auth/VerifyUser.vue";
 
+import refreshToken from "@/graphql/mutations/refreshToken.gql";
+
+import {apolloProvider} from "@/plugins/apollo";
+
 const routes = [
   {
     path: "/",
@@ -115,16 +119,45 @@ function isTokenExpired(token) {
       })
       .join("")
   );
-
   const {exp} = JSON.parse(jsonPayload);
+  console.log((exp * 1000 - new Date().getTime()) / 60000);
   return Date.now() >= exp * 1000;
+}
+
+function refreshTokenIfExpired(token, next) {
+  console.log("refreshing token");
+  apolloProvider.defaultClient.mutate({
+    mutation: refreshToken,
+    variables: {
+      refreshToken: token
+    }
+  }).then((response) => {
+    console.log(response);
+    if (response.data.refreshToken) {
+      store.dispatch("login", response.data.refreshToken).then(() => console.log("refreshed token"));
+    } else {
+      store.dispatch("logout").then(() => console.log("logged out"));
+      next({
+        path: "auth/login",
+      });
+    }
+  }).catch((error) => {
+    console.log(error);
+    store.dispatch("logout").then(() => console.log("logged out"));
+    next({
+      path: "auth/login",
+    });
+  });
 }
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some((record) => record.meta.requiresAuth)) {
     if (store.getters.isLoggedIn) {
-      if (isTokenExpired(store.state.token)) {
-        store.dispatch("logout").then(r => console.log(r));
+      if (isTokenExpired(store.state.accessToken)) {
+        refreshTokenIfExpired(store.state.refreshToken, next);
+      }
+      if (isTokenExpired(store.state.refreshToken)) {
+        store.dispatch("logout").then(() => console.log("logged out"));
         next({
           path: "auth/login",
         });
@@ -134,11 +167,12 @@ router.beforeEach((to, from, next) => {
         });
       }
     } else {
-      if (localStorage.getItem("token") && localStorage.getItem("user")) {
+      if (localStorage.getItem("accessToken") && localStorage.getItem("refreshToken") && localStorage.getItem("user")) {
         store.dispatch("login", {
-          token: localStorage.getItem("token"),
+          accessToken: localStorage.getItem("accessToken"),
+          refreshToken: localStorage.getItem("refreshToken"),
           user: JSON.parse(localStorage.getItem("user"))
-        }).then(r => console.log(r));
+        }).then(() => console.log("Logged in from local storage"));
         next();
       }
       next({

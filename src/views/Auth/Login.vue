@@ -66,10 +66,9 @@ export default {
           password: this.user.password
         }
       }).then((response) => {
-        const token = response.data.authLogin.token;
-        const user = response.data.authLogin.user;
-        if (token) {
-          this.$store.dispatch("login", {token, user});
+        const authLoginResponse = response.data.authLogin;
+        if (authLoginResponse) {
+          this.$store.dispatch("login", authLoginResponse);
           this.$store.dispatch("loading", false);
           this.$router.push({name: "Home"});
           this.$swal(this.toast_success);

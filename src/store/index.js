@@ -2,7 +2,8 @@ import {createStore} from "vuex";
 
 const getDefaultState = () => {
   return {
-    token: "",
+    accessToken: "",
+    refreshToken: "",
     user: {},
   };
 };
@@ -10,15 +11,19 @@ const getDefaultState = () => {
 export default createStore({
   state: {
     isLoading: false,
-    token: "",
+    accessToken: "",
+    refreshToken: "",
     user: {},
   },
   mutations: {
     setLoading(state, payload) {
       state.isLoading = payload;
     },
-    setToken: (state, token) => {
-      state.token = token;
+    setAccessToken: (state, accessToken) => {
+      state.accessToken = accessToken;
+    },
+    setRefreshToken: (state, refreshToken) => {
+      state.refreshToken = refreshToken;
     },
     setUser: (state, user) => {
       state.user = user;
@@ -29,13 +34,17 @@ export default createStore({
   },
   actions: {
     login: ({commit}, payload) => {
-      localStorage.setItem("token", payload.token);
+      localStorage.setItem("accessToken", payload.accessToken);
+      localStorage.setItem("refreshToken", payload.refreshToken);
+      commit("setAccessToken", payload.accessToken);
+      commit("setRefreshToken", payload.refreshToken);
+
       localStorage.setItem("user", JSON.stringify(payload.user));
-      commit("setToken", payload.token);
       commit("setUser", payload.user);
     },
     logout: ({commit}) => {
-      localStorage.removeItem("token");
+      localStorage.removeItem("accessToken");
+      localStorage.removeItem("refreshToken");
       localStorage.removeItem("user");
       commit("reset", "");
     },
@@ -52,7 +61,7 @@ export default createStore({
       return state.isLoading;
     },
     isLoggedIn(state) {
-      return !!state.token;
+      return !!(state.accessToken && state.refreshToken);
     },
     user(state) {
       return state.user;
