@@ -120,19 +120,16 @@ function isTokenExpired(token) {
       .join("")
   );
   const {exp} = JSON.parse(jsonPayload);
-  console.log((exp * 1000 - new Date().getTime()) / 60000);
   return Date.now() >= exp * 1000;
 }
 
 function refreshTokenIfExpired(token, next) {
-  console.log("refreshing token");
   apolloRefreshProvider.defaultClient.mutate({
     mutation: refreshToken,
     variables: {
       refreshToken: token
     }
   }).then((response) => {
-    console.log(response);
     if (response.data.refreshToken) {
       store.dispatch("login", response.data.refreshToken).then(() => console.log("refreshed token"));
     } else {
