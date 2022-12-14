@@ -17,6 +17,8 @@ export default {
 
 <style scoped lang="scss">
 .env-checker {
+  position: absolute;
+  bottom: 0;
   width: 100%;
   color: whitesmoke;
   font-size: var(--font-sm);

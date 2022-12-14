@@ -1,11 +1,13 @@
 <template>
-  <EnvChecker/>
   <Navbar/>
-  <router-view v-slot="{ Component }">
-    <transition name="fade" mode="in-out">
-      <component :is="Component" />
-    </transition>
-  </router-view>
+  <div class="main-router">
+    <router-view v-slot="{ Component }">
+      <transition name="fade" mode="in-out">
+        <component :is="Component" />
+      </transition>
+    </router-view>
+  </div>
+  <EnvChecker/>
 </template>
 
 <script>
@@ -28,4 +30,7 @@ export default {
 </script>
 
 <style lang="scss">
+.main-router {
+  margin-top: 3rem;
+}
 </style>

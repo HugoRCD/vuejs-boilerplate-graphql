@@ -31,17 +31,17 @@
     </div>
   </div>
   <div class="dropdown-menu" v-if="showMenu" v-click-outside="hide">
-    <div class="dropdown-link">
+    <div class="dropdown-link flex-column">
       <router-link v-for="link in nav" :key="link.path" :to="link.path" @click="hide">
         {{ $t(link.name.toLowerCase()) }}
       </router-link>
     </div>
     <div class="dropdown-button" v-if="!isLogged">
       <router-link :to="{ name: 'Login' }">
-        <button class="btn-secondary">{{ $t("login") }}</button>
+        <button class="btn-secondary" @click="hide">{{ $t("login") }}</button>
       </router-link>
       <router-link :to="{ name: 'Signup' }">
-        <button class="btn-primary">{{ $t("signup") }}</button>
+        <button class="btn-primary" @click="hide">{{ $t("signup") }}</button>
       </router-link>
     </div>
     <div class="dropdown-button" v-else>
@@ -141,7 +141,8 @@ export default {
   padding: 1rem 2rem;
   background-color: var(--bg-secondary);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  position: relative;
+  position: fixed;
+  top: 0;
   z-index: 100;
 
   .nav-container {
@@ -208,9 +209,6 @@ export default {
   z-index: 100;
 
   .dropdown-link {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     padding: 1rem 0;
 
     a {
