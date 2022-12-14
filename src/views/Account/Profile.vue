@@ -121,6 +121,8 @@ export default {
                 icon: "error",
               });
             });
+        } else {
+          this.$store.dispatch("loading", false);
         }
       });
     },
