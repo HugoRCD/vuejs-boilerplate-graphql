@@ -32,6 +32,10 @@
         <p>{{ $t("birthdate") }}:</p>
         <input class="custom-input" type="date" v-model="user.birthdate">
       </div>
+      <div class="profile-content-item flex-row">
+        <p>{{ $t("role") }}:</p>
+        <p>{{ $t(role) }}</p>
+      </div>
     </div>
   </div>
 </template>
