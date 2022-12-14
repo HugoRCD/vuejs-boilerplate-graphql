@@ -123,28 +123,23 @@ function isTokenExpired(token) {
   return Date.now() >= exp * 1000;
 }
 
-function refreshTokenIfExpired(token, next) {
-  apolloRefreshProvider.defaultClient.mutate({
+async function refreshTokenIfExpired(token, next) {
+  const response = await apolloRefreshProvider.defaultClient.mutate({
     mutation: refreshToken,
     variables: {
+      id: store.state.user.id,
       refreshToken: token
     }
-  }).then((response) => {
-    if (response.data.refreshToken) {
-      store.dispatch("login", response.data.refreshToken).then(() => console.log("refreshed token"));
-    } else {
-      store.dispatch("logout").then(() => console.log("logged out"));
-      next({
-        path: "auth/login",
-      });
-    }
-  }).catch((error) => {
-    console.log(error);
-    store.dispatch("logout").then(() => console.log("logged out"));
+  });
+  if (response.data.refreshToken) {
+    store.dispatch("login", response.data.refreshToken).then(() => console.log("token refreshed"));
+    next();
+  } else {
+    store.dispatch("logout");
     next({
       path: "auth/login",
     });
-  });
+  }
 }
 
 router.beforeEach((to, from, next) => {
@@ -164,14 +159,6 @@ router.beforeEach((to, from, next) => {
         });
       }
     } else {
-      if (localStorage.getItem("accessToken") && localStorage.getItem("refreshToken") && localStorage.getItem("user")) {
-        store.dispatch("login", {
-          accessToken: localStorage.getItem("accessToken"),
-          refreshToken: localStorage.getItem("refreshToken"),
-          user: JSON.parse(localStorage.getItem("user"))
-        }).then(() => console.log("Logged in from local storage"));
-        next();
-      }
       next({
         path: "auth/login",
         query: {redirect: to.fullPath},
