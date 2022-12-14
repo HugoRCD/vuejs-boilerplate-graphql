@@ -1,14 +1,20 @@
 <template>
   <EnvChecker/>
-  <router-view/>
+  <Navbar/>
+  <router-view v-slot="{ Component }">
+    <transition name="fade" mode="in-out">
+      <component :is="Component" />
+    </transition>
+  </router-view>
 </template>
 
 <script>
 import EnvChecker from "@/components/EnvChecker.vue";
+import Navbar from "@/components/Navbar.vue";
 
 export default {
   name: "App",
-  components: {EnvChecker},
+  components: {Navbar, EnvChecker},
   created() {
     if (localStorage.getItem("accessToken") && localStorage.getItem("refreshToken") && localStorage.getItem("user")) {
       this.$store.dispatch("login", {

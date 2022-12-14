@@ -1,14 +1,11 @@
 <template>
   <div class="auth">
-    <div class="auth-header">
-      <Logo/>
-      <div class="nav-button">
-        <ThemeSwitcher/>
-        <LanguageSelector/>
-      </div>
-    </div>
     <div class="auth-container">
-      <router-view/>
+      <router-view v-slot="{ Component }">
+        <transition name="fade" mode="out-in">
+          <component :is="Component" />
+        </transition>
+      </router-view>
     </div>
   </div>
 </template>

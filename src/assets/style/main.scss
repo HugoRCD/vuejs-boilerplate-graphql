@@ -3,6 +3,8 @@
 @tailwind utilities;
 
 @import "margin";
+@import "animation";
+@import "scrollbar";
 
 // Global styles
 [data-theme="dark"] {
