@@ -30,13 +30,14 @@
       </div>
     </div>
   </div>
+  <div class="backdrop" v-if="showMenu"></div>
   <div class="dropdown-menu" v-if="showMenu" v-click-outside="hide">
     <div class="dropdown-link flex-column">
       <router-link v-for="link in nav" :key="link.path" :to="link.path" @click="hide">
         {{ $t(link.name.toLowerCase()) }}
       </router-link>
     </div>
-    <div class="dropdown-button" v-if="!isLogged">
+    <div class="dropdown-button flex-row justify-center mb-lg" v-if="!isLogged">
       <router-link :to="{ name: 'Login' }">
         <button class="btn-secondary" @click="hide">{{ $t("login") }}</button>
       </router-link>
@@ -44,10 +45,10 @@
         <button class="btn-primary" @click="hide">{{ $t("signup") }}</button>
       </router-link>
     </div>
-    <div class="dropdown-button" v-else>
+    <div class="dropdown-button flex-row justify-center mb-lg" v-else>
       <i class="fas fa-user-circle fa-xl"></i>
     </div>
-    <div class="dropdown-button">
+    <div class="dropdown-button flex-row justify-center mb-lg">
       <ThemeSwitcher/>
       <LanguageSelector/>
     </div>
@@ -200,13 +201,19 @@ export default {
   }
 }
 
+@media screen and (max-width: 768px) {
+  .navbar {
+    z-index: 1000;
+  }
+}
+
 .dropdown-menu {
-  position: absolute;
+  position: fixed;
   top: 4rem;
   left: 0;
   width: 100%;
   background-color: var(--bg-secondary);
-  z-index: 100;
+  z-index: 1000;
 
   .dropdown-link {
     padding: 1rem 0;
@@ -221,15 +228,6 @@ export default {
         color: var(--font-color-secondary);
       }
     }
-  }
-
-  .dropdown-button {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    padding: 1rem 0;
   }
 }
 </style>
