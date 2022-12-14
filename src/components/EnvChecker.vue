@@ -17,7 +17,7 @@ export default {
 
 <style scoped lang="scss">
 .env-checker {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
   color: whitesmoke;
