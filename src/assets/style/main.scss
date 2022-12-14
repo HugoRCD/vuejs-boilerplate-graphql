@@ -23,6 +23,7 @@
   --font-color-secondary: #374151;
   --accent: #10B981;
   --accent-hover: #059669;
+  --danger: #6d0707;
 }
 
 :root {
@@ -68,6 +69,23 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+
+.pointer {
+  cursor: pointer;
 }
 
 .full-height {

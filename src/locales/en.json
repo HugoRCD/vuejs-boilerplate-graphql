@@ -73,5 +73,13 @@
   "reportBug": "Report a bug",
   "askFeature": "Request a feature",
   "askInformations": "Request informations",
-  "messageRequired": "The message field is required !"
+  "messageRequired": "The message field is required !",
+  "edit": "Edit",
+  "editTextConfirm": "Are you sure you want to save your changes ?",
+  "editSuccess": "The changes have been saved !",
+  "editError": "An error occurred while trying to save the changes",
+  "deleteAccount": "Delete account",
+  "deleteAccountText": "Are you sure you want to delete your account ?",
+  "deleteAccountSuccess": "Your account has been deleted !",
+  "deleteAccountError": "An error occurred while trying to delete your account"
 }

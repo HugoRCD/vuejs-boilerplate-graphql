@@ -1,44 +1,38 @@
 <template>
-  <div class="profile">
-    <h1 class="title">{{ $t("profile") }} {{ user.username }}</h1>
-    <p>{{ user }}</p>
-    <button class="btn-primary" @click="toggleEditMode">
-      {{ $t("edit") }}
-    </button>
-    <button class="btn-primary" @click="deleteUser">
-      {{ $t("deleteUser") }}
-    </button>
-    <form class="form" @submit.prevent="updateUser">
-      <div class="form-item">
-        <label for="username">{{ $t("username") }}</label>
-        <input disabled class="input" type="text" name="username" id="username" v-model="user.username"/>
+  <div class="profile container flex-row">
+    <div class="profile-main-section flex-column">
+      <div class="profile-header flex-column">
+        <i class="fas fa-user-circle fa-5x"></i>
+        <input class="custom-input title center" type="text" v-model="user.username">
       </div>
-      <div class="form-group">
-        <div class="form-item">
-          <label for="firstname">{{ $t("firstname") }}</label>
-          <input disabled class="input" type="text" name="firstname" id="firstname" v-model="user.firstname"/>
-        </div>
-        <div class="form-item">
-          <label for="lastname">{{ $t("lastname") }}</label>
-          <input disabled class="input" type="text" name="lastname" id="lastname" v-model="user.lastname"/>
-        </div>
+      <div class="profile-tools flex-row pointer">
+        <i class="fas fa-edit fa-md" @click="updateUser"></i>
+        <i class="fas fa-sign-out-alt fa-md" @click="logout"></i>
+        <i class="fas fa-trash-alt fa-md" @click="deleteUser"></i>
       </div>
-      <div class="form-group">
-        <div class="form-item">
-          <label for="email">{{ $t("email") }}</label>
-          <input disabled class="input" type="email" name="email" id="email" v-model="user.email"/>
-        </div>
-        <div class="form-item">
-          <label for="phone">{{ $t("phone") }}</label>
-          <input disabled class="input" type="text" name="phone" id="phone" v-model="user.phone"/>
-        </div>
+    </div>
+    <div class="profile-content">
+      <div class="profile-content-item flex-row">
+        <p>{{ $t("firstname") }}:</p>
+        <input class="custom-input" type="text" v-model="user.firstname">
       </div>
-      <div class="form-item">
-        <label for="password">{{ $t("password") }}</label>
-        <input disabled class="input" type="password" name="password" id="password" v-model="user.password"/>
+      <div class="profile-content-item flex-row">
+        <p>{{ $t("lastname") }}:</p>
+        <input class="custom-input" type="text" v-model="user.lastname">
       </div>
-      <button class="btn-primary" type="submit">{{ $t("update") }}</button>
-    </form>
+      <div class="profile-content-item flex-row">
+        <p>{{ $t("email") }}:</p>
+        <input class="custom-input" type="text" v-model="user.email">
+      </div>
+      <div class="profile-content-item flex-row">
+        <p>{{ $t("phone") }}:</p>
+        <input class="custom-input" type="text" v-model="user.phone">
+      </div>
+      <div class="profile-content-item flex-row">
+        <p>{{ $t("birthdate") }}:</p>
+        <input class="custom-input" type="date" v-model="user.birthdate">
+      </div>
+    </div>
   </div>
 </template>
 
@@ -52,7 +46,6 @@ export default {
   data() {
     return {
       user: {
-        id: null,
         username: "",
         firstname: "",
         lastname: "",
@@ -60,8 +53,6 @@ export default {
         phone: "",
         birthdate: "",
         role: null,
-        createdAt: "",
-        updatedAt: "",
       },
       password: "",
       editMode: false,
@@ -82,47 +73,56 @@ export default {
     this.getUser();
   },
   methods: {
-    toggleEditMode() {
-      if (!this.editMode) {
-        const inputs = document.querySelectorAll(".input");
-        inputs.forEach((input) => {
-          input.removeAttribute("disabled");
-        });
-        this.editMode = true;
-      } else {
-        const inputs = document.querySelectorAll(".input");
-        inputs.forEach((input) => {
-          input.setAttribute("disabled", "disabled");
-        });
-        this.editMode = false;
-      }
-    },
     updateUser() {
       this.$store.dispatch("loading", true);
-      this.$apollo
-        .mutate({
-          mutation: updateUser,
-          variables: {
-            user: {
-              username: this.user.username,
-              firstname: this.user.firstname,
-              lastname: this.user.lastname,
-              email: this.user.email,
-              phone: this.user.phone,
-              birthdate: this.user.birthdate,
-              password: this.password
-            },
-            id: this.user.id
-          }
-        })
-        .then(({data}) => {
-          this.$store.commit("setUser", data.updateUser);
-          this.$store.dispatch("loading", false);
-        })
-        .catch(error => {
-          console.log(error);
-          this.$store.dispatch("loading", false);
-        });
+      this.$swal.fire({
+        title: this.$t("editTextConfirm"),
+        html: `<input id="swal-input1" class="swal2-input" type="password" placeholder="${this.$t("password")}">`,
+        icon: "warning",
+        timer: false,
+        position: "center",
+        toast: false,
+        showCancelButton: true,
+        showConfirmButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: this.$t("yes"),
+        cancelButtonText: this.$t("no"),
+      }).then((result) => {
+        if (result.value) {
+          this.$apollo
+            .mutate({
+              mutation: updateUser,
+              variables: {
+                user: {
+                  id: this.user.id,
+                  username: this.user.username,
+                  firstname: this.user.firstname,
+                  lastname: this.user.lastname,
+                  email: this.user.email,
+                  phone: this.user.phone,
+                  birthdate: this.user.birthdate,
+                  password: document.getElementById("swal-input1").value,
+                },
+                id: this.$store.state.user.id,
+              },
+            })
+            .then((res) => {
+              this.$store.dispatch("loading", false);
+              this.$swal.fire({
+                title: this.$t("editSuccess"),
+                icon: "success",
+              });
+            })
+            .catch((err) => {
+              this.$store.dispatch("loading", false);
+              this.$swal.fire({
+                title: this.$t("editError"),
+                icon: "error",
+              });
+            });
+        }
+      });
     },
     getUser() {
       this.$apollo.query({
@@ -131,15 +131,49 @@ export default {
           id: this.$store.state.user.id
         }
       }).then(({data}) => {
-        this.user = data.getUserById;
+        const findUser = data.getUserById;
+        this.user = {
+          username: findUser.username,
+          firstname: findUser.firstname,
+          lastname: findUser.lastname,
+          email: findUser.email,
+          phone: findUser.phone,
+          birthdate: findUser.birthdate,
+          role: findUser.role
+        };
       }).catch(error => {
         console.log(error);
       });
     },
+    logout() {
+      this.$swal({
+        title: this.$t("logout"),
+        text: this.$t("logoutMessage"),
+        icon: "warning",
+        position: "middle",
+        toast: false,
+        showConfirmButton: true,
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: this.$t("yes"),
+        cancelButtonText: this.$t("no")
+      }).then(result => {
+        if (result.isConfirmed) {
+          this.$store.dispatch("logout");
+          this.$router.push({name: "Login"});
+          this.$swal({
+            text: this.$t("logoutSuccess"),
+            icon: "success",
+          });
+          this.menuOpen = false;
+        }
+      });
+    },
     deleteUser() {
       this.$swal({
-        title: this.$t("deleteUser"),
-        text: this.$t("deleteUserText"),
+        title: this.$t("deleteAccount"),
+        text: this.$t("deleteAccountText"),
         icon: "warning",
         position: "middle",
         toast: false,
@@ -174,4 +208,17 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.profile {
+  justify-content: center;
+  gap: 2rem;
+  color: var(--font-color);
+}
+
+.custom-input {
+  border: none;
+  background: none;
+  outline: none;
+  width: 100%;
+  padding: 0;
+}
 </style>

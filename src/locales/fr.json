@@ -73,5 +73,12 @@
   "reportBug": "Signaler un bug",
   "askFeature": "Demande de fonctionnalité",
   "askInformations": "Demande d'informations",
-  "messageRequired": "Le champ message est requis !"
+  "messageRequired": "Le champ message est requis !",
+  "edit": "Modifier",
+  "editTextConfirm": "Êtes-vous sûr de vouloir sauvegarder vos modifications ?",
+  "editSuccess": "Les modifications ont été sauvegardées avec succès !",
+  "deleteAccount": "Supprimer le compte",
+  "deleteAccountText": "Vous êtes sur le point de supprimer votre compte. Cette action est irréversible. Êtes-vous sûr de vouloir continuer ?",
+  "deleteAccountSuccess": "Votre compte a été supprimé avec succès !",
+  "deleteAccountError": "Une erreur est survenue lors de la suppression de votre compte"
 }
