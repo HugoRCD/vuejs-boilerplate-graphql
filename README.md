@@ -2,7 +2,7 @@
 
 # Introduction
 Here is a completely working VueJS Template ! This app is a single-page application built with VueJS and includes features such as OAuth authentication with Google, translation with I18n, and a dark and light theme and many more...
-Everything is connect and ready to use to a working api in NestJS check here !!! [NestJS Template](https://github.com/HugoRCD/nestjs-boilerplate-graphql)
+Everything is connect and ready to use to a working api in NestJS check here !!! [NestJS GraphQL Template](https://github.com/HugoRCD/nestjs-boilerplate-graphql)
 
 ## Features
 - Translation with I18n
@@ -15,7 +15,7 @@ To get started with My VueJS App, follow these steps:
 
 ### Clone the repository:
 ```
-git clone git@github.com:HugoRCD/vuejs-boilerplate.git
+git clone git@github.com:HugoRCD/vuejs-boilerplate-graphql.git
 ```
 
 ### Install dependencies:
